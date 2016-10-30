@@ -1,0 +1,22 @@
+{
+    "name": "bitaac/bitfabric",
+    "authors": [
+        {
+            "name": "Kristoffer Eklund",
+            "email": "kristoffereklund1@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "paytal/paytal": "dev-master",
+        "paytal/paypal": "dev-master"
+    },
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bitaac\\": "src/"
+        },
+        "files": [
+            "src/Core/helpers.php"
+        ]
+    }
+}
