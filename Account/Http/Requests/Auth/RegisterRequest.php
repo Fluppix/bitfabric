@@ -2,7 +2,6 @@
 
 namespace Bitaac\Account\Http\Requests\Auth;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest

@@ -214,7 +214,7 @@ if (! function_exists('lines')) {
     {
         $i = 0;
 
-        return preg_replace_callback('/\\r\\n/i', function ($value) use (&$i,$lines) {
+        return preg_replace_callback('/\\r\\n/i', function ($value) use (&$i, $lines) {
             if ((++$i) > $lines) {
                 return;
             }

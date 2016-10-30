@@ -21,7 +21,7 @@ class GuildServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $migrations = [
-        __DIR__.'/Resources/Migrations'
+        __DIR__.'/Resources/Migrations',
     ];
 
     /**

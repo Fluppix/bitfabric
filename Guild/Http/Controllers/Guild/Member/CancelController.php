@@ -24,7 +24,7 @@ class CancelController extends Controller
      */
     public function post(CancelRequest $request, $guild)
     {
-        $invite = app('guild.invite')->where(function ($query) use ($request,$guild) {
+        $invite = app('guild.invite')->where(function ($query) use ($request, $guild) {
             $query->where('player_id', $request->get('character'));
             $query->where('guild_id', $guild->id);
         });
