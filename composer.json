@@ -13,10 +13,10 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Bitaac\\": "src/"
+            "Bitaac\\": ""
         },
         "files": [
-            "src/Core/helpers.php"
+            "Core/helpers.php"
         ]
     }
 }
