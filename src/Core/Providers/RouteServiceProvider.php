@@ -62,30 +62,30 @@ class RouteServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot(\Illuminate\Routing\Router $router)
+    public function boot()
     {
-        $router->bind('player', function ($name) {
+        $this->app['router']->bind('player', function ($name) {
             $name = str_replace('-', ' ', $name);
 
             return app('player')->where('name', $name)->first();
         });
 
-        $router->bind('thread', function ($thread) {
+        $this->app['router']->bind('thread', function ($thread) {
             return (new ForumPost)->where('title', str_replace('-', ' ', $thread))->first();
         });
 
-        $router->bind('guild', function ($guild) {
+        $this->app['router']->bind('guild', function ($guild) {
             return app('guild')->where('name', str_replace('-', ' ', $guild))->first();
         });
 
-        $router->bind('board', function ($board) {
+        $this->app['router']->bind('board', function ($board) {
             return (new Board)->where('title', str_replace('-', ' ', $board))->first();
         });
 
         $kernel = app('\Illuminate\Contracts\Http\Kernel');
 
-        array_walk($this->routeMiddleware, function ($class, $name) use ($router) {
-            $router->middleware($name, $class);
+        array_walk($this->routeMiddleware, function ($class, $name) {
+            $this->app['router']->middleware($name, $class);
         });
 
         array_walk($this->middleware, function ($class) use ($kernel) {
@@ -93,17 +93,20 @@ class RouteServiceProvider extends ServiceProvider
             $kernel->pushMiddleware($class);
         });
 
-        parent::boot($router);
+        parent::boot();
     }
 
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function map(Router $router)
+    public function map()
     {
+        parent::map();
+
+        $router = $this->app['router'];
+
         $router->group(['namespace' => $this->namespace], function ($router) {
             require __DIR__.'/../Http/routes.php';
         });
