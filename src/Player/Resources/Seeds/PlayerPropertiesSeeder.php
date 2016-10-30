@@ -4,7 +4,6 @@ namespace Bitaac\Player\Resources\Seeds;
 
 use Illuminate\Database\Seeder;
 use Bitaac\Player\Models\BitPlayer;
-use Illuminate\Database\Eloquent\Model;
 
 class PlayerPropertiesSeeder extends Seeder
 {

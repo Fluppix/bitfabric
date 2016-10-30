@@ -12,39 +12,39 @@ class Account extends Model implements Contract
     use Authenticatable;
 
     /**
-     * Table used by the model
+     * Table used by the model.
      */
     protected $table = 'accounts';
 
     /**
-     * Tell the model to not use timestamps
+     * Tell the model to not use timestamps.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Retrive the accounts birthday
+     * Retrive the accounts birthday.
      *
-     * @return integer
+     * @return int
      */
     public function birthday()
     {
-        return ($this->creation) ? $this->creation: strtotime($this->bit->created_at);
+        return ($this->creation) ? $this->creation : strtotime($this->bit->created_at);
     }
 
     /**
-     * Determinate if account has pending change email
+     * Determinate if account has pending change email.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasPendingEmail()
     {
-        return (boolean) $this->bit->email_change_new;
+        return (bool) $this->bit->email_change_new;
     }
 
     /**
-     * Get the pending email
+     * Get the pending email.
      *
      * @return string
      */
@@ -54,7 +54,7 @@ class Account extends Model implements Contract
     }
 
     /**
-     * Get the timestamp when pending email is gonna be updated
+     * Get the timestamp when pending email is gonna be updated.
      *
      * @return timestamp
      */
@@ -64,7 +64,7 @@ class Account extends Model implements Contract
     }
 
     /**
-     * Update the email with the pending email
+     * Update the email with the pending email.
      *
      * @return void
      */
@@ -74,12 +74,12 @@ class Account extends Model implements Contract
         $this->save();
 
         $this->bit->email_change_time = null;
-        $this->bit->email_change_new  = null;
+        $this->bit->email_change_new = null;
         $this->bit->save();
     }
 
     /**
-     * Return related BitAccount
+     * Return related BitAccount.
      *
      * @return Bitaac\Account\BitAccount
      */
@@ -89,7 +89,7 @@ class Account extends Model implements Contract
     }
 
     /**
-     * return all related characters to the account
+     * return all related characters to the account.
      *
      * @return
      */
@@ -99,63 +99,57 @@ class Account extends Model implements Contract
     }
 
     /**
-     * Determine if account is a admin account_id
+     * Determine if account is a admin account_id.
      *
-     * @return boolean
+     * @return bool
      */
     public function isAdmin()
     {
-        return (boolean) $this->bit->admin;
+        return (bool) $this->bit->admin;
     }
 
     /**
      * Get all characters that belongs to given guild.
      *
-     * @return 
+     * @return
      */
     public function getGuildCharacters($guild)
     {
-        foreach ($guild->getMembers as $member) 
-        {
-            if ($member->player->account_id == $this->id) 
-            {
+        foreach ($guild->getMembers as $member) {
+            if ($member->player->account_id == $this->id) {
                 $characters[] = $member;
             }
         }
 
-        return (isset($characters)) ? $characters : false ;
+        return (isset($characters)) ? $characters : false;
     }
 
     /**
      * Get all characters that belongs to given guild expect owner.
      *
-     * @return 
+     * @return
      */
     public function getGuildCharactersExpectOwner($guild)
     {
-        foreach ($guild->getMembersExceptOwner as $member) 
-        {
-            if ($member->player->account_id == $this->id and $member->player->id != $this->ownerid) 
-            {
+        foreach ($guild->getMembersExceptOwner as $member) {
+            if ($member->player->account_id == $this->id and $member->player->id != $this->ownerid) {
                 $characters[] = $member;
             }
         }
 
-        return (isset($characters)) ? $characters : false ;
+        return (isset($characters)) ? $characters : false;
     }
 
     /**
      * Determine if any character on account has invite to guild.
      *
      * @param  \Bitaac\Guild\Contracts\Guild  $Guild
-     * @return boolean
+     * @return bool
      */
     public function hasGuildInvite($guild)
-    {   
-        foreach ($guild->getInvites as $invite)
-        {
-            if ($invite->player->account_id == $this->id)
-            {
+    {
+        foreach ($guild->getInvites as $invite) {
+            if ($invite->player->account_id == $this->id) {
                 return true;
             }
         }
@@ -167,33 +161,29 @@ class Account extends Model implements Contract
      * Determine if any character on account is vice-leader for guild.
      *
      * @param \Bitaac\Guild\Contracts\Guild  $Guild
-     * @return boolean
+     * @return bool
      */
     public function hasViceLeader($guild)
     {
-        foreach ($guild->getViceLeaders as $leader)
-        {
-            if ($leader->player->account_id == $this->id)
-            {
+        foreach ($guild->getViceLeaders as $leader) {
+            if ($leader->player->account_id == $this->id) {
                 return true;
             }
         }
 
         return false;
-    }   
+    }
 
     /**
      * Determine if any character on account is leader for guild.
      *
      * @param \Bitaac\Guild\Contracts\Guild  $Guild
-     * @return boolean
+     * @return bool
      */
     public function hasLeader($guild)
     {
-        foreach ($guild->getLeaders as $leader)
-        {
-            if ($leader->player->account_id == $this->id)
-            {
+        foreach ($guild->getLeaders as $leader) {
+            if ($leader->player->account_id == $this->id) {
                 return true;
             }
         }
@@ -205,14 +195,12 @@ class Account extends Model implements Contract
      * Determine if any character on account is owner for guild.
      *
      * @param \Bitaac\Guild\Contracts\Guild  $Guild
-     * @return boolean
+     * @return bool
      */
     public function hasOwner($guild)
     {
-        foreach ($this->characters as $character)
-        {
-            if ($character->id == $guild->ownerid)
-            {
+        foreach ($this->characters as $character) {
+            if ($character->id == $guild->ownerid) {
                 return true;
             }
         }
@@ -224,14 +212,12 @@ class Account extends Model implements Contract
      * Determine if any character on account is member of guild.
      *
      * @param \Bitaac\Guild\Contracts\Guild  $Guild
-     * @return boolean
+     * @return bool
      */
     public function hasMember($guild)
     {
-        foreach ($guild->getAllMembers as $member)
-        {
-            if ($member->player->account_id == $this->id)
-            {
+        foreach ($guild->getAllMembers as $member) {
+            if ($member->player->account_id == $this->id) {
                 return true;
             }
         }
@@ -246,7 +232,6 @@ class Account extends Model implements Contract
      */
     public function getRememberToken()
     {
-        return;
     }
 
     /**
@@ -266,6 +251,5 @@ class Account extends Model implements Contract
      */
     public function getRememberTokenName()
     {
-        return;
     }
 }

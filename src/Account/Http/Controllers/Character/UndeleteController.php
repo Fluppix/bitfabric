@@ -2,17 +2,12 @@
 
 namespace Bitaac\Core\Http\Controllers\Account\Character;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Bitaac\Player\BitPlayer;
-use Bitaac\Http\Requests\Character\DeleteRequest;
 
 class UndeleteController extends Controller
 {
     /**
-     * Show the undelete character form to the user
+     * Show the undelete character form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +21,7 @@ class UndeleteController extends Controller
     }
 
     /**
-     * Process the character undelete
+     * Process the character undelete.
      *
      * @return \Illuminate\Http\Response
      */

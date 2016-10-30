@@ -18,14 +18,14 @@ return [
             'client' => env('PAYPAL_CLIENT', 'XXX'),
             'secret' => env('PAYPAL_SECRET', 'XXX'),
             'returnUrl' => 'paypal.return',
-            'cancelUrl' => 'paypal.cancel'
+            'cancelUrl' => 'paypal.cancel',
         ],
 
         'offers' => [
             '10.00' => 250,
-            '15.00' => 350, 
-            '20.00' => 450
-        ]
+            '15.00' => 350,
+            '20.00' => 450,
+        ],
     ],
 
 ];

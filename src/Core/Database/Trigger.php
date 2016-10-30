@@ -25,7 +25,7 @@ class Trigger
         }
 
         $this->trigger = (object) [
-            'Trigger'   => strtolower(sprintf("%s_%s_%s", $timing, $event, $table)),
+            'Trigger'   => strtolower(sprintf('%s_%s_%s', $timing, $event, $table)),
             'Timing'    => $timing,
             'Event'     => $event,
             'Table'     => $table,
@@ -122,7 +122,7 @@ class Trigger
     protected function backup()
     {
         if (empty($this->statement())) {
-            return null;
+            return;
         }
 
         list($start, $close) = $this->tags();
@@ -152,7 +152,9 @@ class Trigger
         $statement = $rollback['statement'];
 
         foreach ($revisions as $revision) {
-            if ($revision['revision'] === $rollback['revision']) continue;
+            if ($revision['revision'] === $rollback['revision']) {
+                continue;
+            }
 
             $statement .= sprintf("\n\n%s", $revision['original']);
         }
@@ -205,8 +207,8 @@ class Trigger
         $revision = substr(sha1(time()), 0, 7);
 
         return [
-            sprintf("/* REV %s *//*", $revision),
-            sprintf("*//* %s */", $revision),
+            sprintf('/* REV %s *//*', $revision),
+            sprintf('*//* %s */', $revision),
         ];
     }
 }

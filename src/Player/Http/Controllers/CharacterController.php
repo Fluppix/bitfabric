@@ -19,7 +19,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Show the character page to the user
+     * Show the character page to the user.
      *
      * @return \Illuminate\Http\Response
      */

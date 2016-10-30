@@ -19,17 +19,17 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the index page to the user
+     * Show the index page to the user.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    
+    {
         return view('bitaac::account.dashboard');
     }
 
     /**
-     * Logout the user
+     * Logout the user.
      *
      * @return \Illuminate\Http\Response
      */

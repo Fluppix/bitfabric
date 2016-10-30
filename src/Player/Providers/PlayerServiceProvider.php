@@ -16,7 +16,7 @@ class PlayerServiceProvider extends AggregateServiceProvider
         require_once __DIR__.'/../Http/routes.php';
 
         $this->publishes([
-            __DIR__.'/../Resources/Config' => config_path('bitaac')
+            __DIR__.'/../Resources/Config' => config_path('bitaac'),
         ], 'config');
     }
 

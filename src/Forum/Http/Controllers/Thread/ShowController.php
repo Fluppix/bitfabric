@@ -3,7 +3,6 @@
 namespace Bitaac\Forum\Http\Controllers\Thread;
 
 use Illuminate\Http\Request;
-use Bitaac\Forum\Post;
 use Bitaac\Forum\Board;
 use App\Http\Controllers\Controller;
 
@@ -18,11 +17,11 @@ class ShowController extends Controller
      */
     public function index($board, $thread)
     {
-        $posts  = $thread->replies()->paginate(10);
+        $posts = $thread->replies()->paginate(10);
 
         if ($thread->lastip != $ip = ip2long(request()->ip())) {
             $thread->lastip = $ip;
-            $thread->views  = $thread->views + 1;
+            $thread->views = $thread->views + 1;
             $thread->save();
         }
 
@@ -30,7 +29,7 @@ class ShowController extends Controller
             'thread' => $thread,
             'board'  => $board,
             'posts'  => $posts,
-            'offset' => ($posts->currentPage() * $posts->perPage()) - $posts->perPage()
+            'offset' => ($posts->currentPage() * $posts->perPage()) - $posts->perPage(),
         ]);
     }
 }

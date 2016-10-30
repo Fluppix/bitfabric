@@ -12,13 +12,13 @@ class OwnsMoreCharactersThanMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  integer  $amount
+     * @param  int  $amount
      * @return mixed
      */
     public function handle($request, Closure $next, $amount)
     {
         if (auth()->check() && auth()->user()->characters < $amount) {
-            // 
+            //
         }
 
         return $next($request);

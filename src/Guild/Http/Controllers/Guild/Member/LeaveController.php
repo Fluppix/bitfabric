@@ -2,14 +2,13 @@
 
 namespace Bitaac\Guild\Http\Controllers\Guild\Member;
 
-use Auth;
 use App\Http\Controllers\Controller;
 use Bitaac\Guild\Http\Requests\Guild\Member\LeaveRequest;
 
 class LeaveController extends Controller
 {
     /**
-     * Show the leave form to the user. 
+     * Show the leave form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +24,7 @@ class LeaveController extends Controller
      */
     public function post(LeaveRequest $request, $guild)
     {
-        $member = app('guild.member')->where(function($query) use($guild, $request) {
+        $member = app('guild.member')->where(function ($query) use ($guild,$request) {
             $query->where('player_id', $request->get('character'));
             $query->where('guild_id', $guild->id);
         })->delete();

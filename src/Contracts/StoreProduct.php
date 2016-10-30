@@ -2,6 +2,6 @@
 
 namespace Bitaac\Contracts;
 
-interface StoreProduct {
-
+interface StoreProduct
+{
 }

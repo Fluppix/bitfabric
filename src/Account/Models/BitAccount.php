@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class BitAccount extends Model
 {
     /**
-     * Table used by the model
+     * Table used by the model.
      */
     protected $table = '__bitaac_accounts';
 
     /**
-     * Renew the last_login value
+     * Renew the last_login value.
      *
      * @return void
      */

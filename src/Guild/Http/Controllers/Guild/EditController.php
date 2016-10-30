@@ -23,7 +23,7 @@ class EditController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function post(EditRequest $request, $guild)
-    {   
+    {
         if ($request->has('description')) {
             $guild->bitaac->description = $request->get('description');
             $guild->bitaac->save();

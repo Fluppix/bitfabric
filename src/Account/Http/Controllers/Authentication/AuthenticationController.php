@@ -25,7 +25,7 @@ class AuthenticationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function form()
-    {    
+    {
         return view('bitaac::account.authentication.index');
     }
 
@@ -45,12 +45,14 @@ class AuthenticationController extends Controller
         }
 
         if ($user->secret) {
-            $user->secret = "";
+            $user->secret = '';
             $user->save();
+
             return back()->withSuccess(trans('authentication.disable.success'));
         } else {
             $user->secret = $user->bit->secret;
             $user->save();
+
             return back()->withSuccess(trans('authentication.enable.success'));
         }
     }

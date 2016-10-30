@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild\Member;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class CancelRequest extends FormRequest 
+class CancelRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +14,7 @@ class CancelRequest extends FormRequest
     public function rules()
     {
         return [
-            'character' => 'required|integer'
+            'character' => 'required|integer',
         ];
     }
 

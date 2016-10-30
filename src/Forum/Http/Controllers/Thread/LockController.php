@@ -19,13 +19,13 @@ class LockController extends Controller
         if ($thread->locked) {
             return redirect(url_e('/forum/:board/:thread', [
                 'thread' => $thread->title,
-                'board'  => $board->title
+                'board'  => $board->title,
             ]));
         }
 
         return view('bitaac::forum.thread.lock', [
             'thread' => $thread,
-            'board'  => $board
+            'board'  => $board,
         ]);
     }
 
@@ -42,7 +42,7 @@ class LockController extends Controller
 
         return redirect(url_e('/forum/:board/:thread', [
             'board'  => $board->title,
-            'thread' => $thread->title
+            'thread' => $thread->title,
         ]))->withSuccess('Thread has been locked.');
     }
 }

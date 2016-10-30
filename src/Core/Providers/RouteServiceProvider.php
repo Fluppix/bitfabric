@@ -29,13 +29,13 @@ class RouteServiceProvider extends ServiceProvider
         'email.update'     => \Bitaac\Core\Http\Middleware\EmailUpdateMiddleware::class,
         'character.exists' => \Bitaac\Core\Http\Middleware\CharacterExistsMiddleware::class,
         'owns.character'   => \Bitaac\Http\Middleware\OwnsCharacterMiddleware::class,
-        'admin'            => \Bitaac\Core\Http\Middleware\AdminMiddleware::class,  
+        'admin'            => \Bitaac\Core\Http\Middleware\AdminMiddleware::class,
 
         'has.owner'        => \Bitaac\Core\Http\Middleware\Guild\HasOwner::class,
         'can.invite'       => \Bitaac\Core\Http\Middleware\Guild\CanInvite::class,
         'can.edit'         => \Bitaac\Core\Http\Middleware\Guild\CanEdit::class,
         'has.invite'       => \Bitaac\Core\Http\Middleware\Guild\HasInvite::class,
-        
+
         // TO:DO
         'has.leader'       => \Bitaac\Core\Http\Middleware\Guild\HasLeader::class,
         'has.vice.leader'  => \Bitaac\Core\Http\Middleware\Guild\HasViceLeader::class,
@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var array
      */
     protected $middleware = [
-        \Bitaac\Core\Http\Middleware\DeleteCharacterMiddleware::class
+        \Bitaac\Core\Http\Middleware\DeleteCharacterMiddleware::class,
     ];
 
     /**
@@ -64,31 +64,31 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
-        $router->bind('player', function($name) {
+        $router->bind('player', function ($name) {
             $name = str_replace('-', ' ', $name);
 
             return app('player')->where('name', $name)->first();
         });
 
-        $router->bind('thread', function($thread) {
+        $router->bind('thread', function ($thread) {
             return (new ForumPost)->where('title', str_replace('-', ' ', $thread))->first();
         });
 
-        $router->bind('guild', function($guild) {
+        $router->bind('guild', function ($guild) {
             return app('guild')->where('name', str_replace('-', ' ', $guild))->first();
         });
 
-        $router->bind('board', function($board) {
+        $router->bind('board', function ($board) {
             return (new Board)->where('title', str_replace('-', ' ', $board))->first();
         });
 
         $kernel = app('\Illuminate\Contracts\Http\Kernel');
 
-        array_walk($this->routeMiddleware, function($class, $name) use($router) {
+        array_walk($this->routeMiddleware, function ($class, $name) use ($router) {
             $router->middleware($name, $class);
         });
 
-        array_walk($this->middleware, function($class) use($kernel) {
+        array_walk($this->middleware, function ($class) use ($kernel) {
             $kernel->prependMiddleware($class);
             $kernel->pushMiddleware($class);
         });

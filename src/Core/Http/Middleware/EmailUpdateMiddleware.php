@@ -18,7 +18,7 @@ class EmailUpdateMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         $user = auth()->user();
-        
+
         if ($user->hasPendingEmail() && time() > $user->bit->email_change_time) {
             $user->updateEmailWithPending();
         }

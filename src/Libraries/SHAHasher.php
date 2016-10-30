@@ -2,8 +2,8 @@
 
 namespace Bitaac\Libraries;
 
-class SHAHasher implements \Illuminate\Contracts\Hashing\Hasher {
-
+class SHAHasher implements \Illuminate\Contracts\Hashing\Hasher
+{
     /**
      * Hash the given value.
      *
@@ -11,7 +11,8 @@ class SHAHasher implements \Illuminate\Contracts\Hashing\Hasher {
      * @return array   $options
      * @return string
      */
-    public function make($value, array $options = array()) {
+    public function make($value, array $options = [])
+    {
         return hash('sha1', $value);
     }
 
@@ -23,7 +24,8 @@ class SHAHasher implements \Illuminate\Contracts\Hashing\Hasher {
      * @param  array   $options
      * @return bool
      */
-    public function check($value, $hashedValue, array $options = array()) {
+    public function check($value, $hashedValue, array $options = [])
+    {
         return $this->make($value) === $hashedValue;
     }
 
@@ -34,8 +36,8 @@ class SHAHasher implements \Illuminate\Contracts\Hashing\Hasher {
      * @param  array   $options
      * @return bool
      */
-    public function needsRehash($hashedValue, array $options = array()) {
+    public function needsRehash($hashedValue, array $options = [])
+    {
         return false;
     }
-
 }

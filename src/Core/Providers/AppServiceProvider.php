@@ -16,7 +16,7 @@ class AppServiceProvider extends \App\Providers\AppServiceProvider
     {
         parent::boot();
 
-        view()->composer('*', function($view) {
+        view()->composer('*', function ($view) {
             $view->with('account', auth()->user());
         });
 

@@ -18,7 +18,7 @@ class ReplyController extends Controller
     {
         return view('bitaac::forum.thread.reply', [
             'thread' => $thread,
-            'board'  => $board
+            'board'  => $board,
         ]);
     }
 
@@ -33,25 +33,25 @@ class ReplyController extends Controller
     {
         $this->validate($request, [
             'author'  => 'required|owns_character',
-            'content' => 'required|between:15,3000'
+            'content' => 'required|between:15,3000',
         ]);
 
         $thread->timestamp = time();
         $thread->save();
 
         $post = app('forum.post');
-        $post->title      = $thread->title;
-        $post->board_id   = $board->id;
-        $post->player_id  = $request->get('author');
+        $post->title = $thread->title;
+        $post->board_id = $board->id;
+        $post->player_id = $request->get('author');
         $post->belongs_to = $thread->id;
-        $post->content    = $request->get('content');
-        $post->timestamp  = time();
+        $post->content = $request->get('content');
+        $post->timestamp = time();
         $post->save();
 
         return redirect(url_e('/forum/:board/:thread#:postId', [
             'board'  => $board->title,
             'thread' => $thread->title,
-            'postId' => $post->id
+            'postId' => $post->id,
         ]));
     }
 }

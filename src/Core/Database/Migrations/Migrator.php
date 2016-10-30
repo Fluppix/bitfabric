@@ -30,8 +30,8 @@ class Migrator extends BaseMigrator
             list($namespace, $files) = $group;
 
             return array_map(function ($file) use ($namespace) {
-                return ($namespace ? $namespace.'\\' : null).str_replace('.php', null, basename($file)); }
-            , $files);
+                return ($namespace ? $namespace.'\\' : null).str_replace('.php', null, basename($file));
+            }, $files);
         });
 
         $files = $files->flatten()->toArray();
@@ -57,7 +57,7 @@ class Migrator extends BaseMigrator
 
         $locations->each(function ($location) use ($files) {
             $path = head($location);
-        
+
             foreach ($files as $file) {
                 $file = head($this->parseFileName($file));
 
@@ -83,7 +83,7 @@ class Migrator extends BaseMigrator
         if (! class_exists($class)) {
             $this->requireFiles(null, [$file]);
         }
-        
+
         return new $class;
     }
 

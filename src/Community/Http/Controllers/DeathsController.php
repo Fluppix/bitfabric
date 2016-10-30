@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class DeathsController extends Controller
 {
     /**
-     * Show the deaths page to the user
+     * Show the deaths page to the user.
      *
      * @return \Illuminate\Http\Response
      */

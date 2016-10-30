@@ -3,7 +3,6 @@
 namespace Bitaac\Core\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class CharacterExistsMiddleware
 {

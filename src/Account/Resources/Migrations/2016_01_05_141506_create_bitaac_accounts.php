@@ -34,7 +34,7 @@ class CreateBitaacAccounts extends Migration
         Trigger::after('insert')->on('accounts')->create(function ($query) {
             $query->table('__bitaac_accounts')->insert([
                 'account_id' => DB::raw('NEW.`id`'),
-                'created_at' => DB::raw('now()')
+                'created_at' => DB::raw('now()'),
             ]);
         });
     }

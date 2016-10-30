@@ -7,12 +7,12 @@ use Bitaac\Core\Database\Eloquent\Model;
 class BitPlayer extends Model
 {
     /**
-     * Table used by the model
+     * Table used by the model.
      */
     protected $table = '__bitaac_players';
 
     /**
-     * Get the players related row from players
+     * Get the players related row from players.
      *
      * @return \Player\Player
      */

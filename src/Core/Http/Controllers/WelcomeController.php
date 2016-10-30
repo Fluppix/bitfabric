@@ -8,7 +8,7 @@ use Bitaac\Forum\Models\Board;
 class WelcomeController extends Controller
 {
     /**
-     * Show the index page to the user
+     * Show the index page to the user.
      *
      * @return \Illuminate\Http\Response
      */

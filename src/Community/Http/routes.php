@@ -8,7 +8,7 @@
 | ...
 |
 */
-$router    = app('router');
+$router = app('router');
 $namespace = 'Bitaac\Community\Http\Controllers';
 
 /*
@@ -19,7 +19,7 @@ $namespace = 'Bitaac\Community\Http\Controllers';
 | ...
 |
 */
-$router->group(['middleware' => ['web'], 'namespace' => $namespace], function($router){
-	$router->get('/online', 'OnlineController@index');
+$router->group(['middleware' => ['web'], 'namespace' => $namespace], function ($router) {
+    $router->get('/online', 'OnlineController@index');
     $router->get('/deaths', 'DeathsController@index');
 });

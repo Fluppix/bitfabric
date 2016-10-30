@@ -3,16 +3,13 @@
 namespace Bitaac\Libraries\Outfit;
 
 /**
- *
  * @author Renato Ribeiro <renatoribroman@gmail.com>
  * @copyright Copyright (c) 2015, Renato Ribeiro
  * @version 1.0
- *
  */
-
-class Outfit {
-
-    public $outfits_dir = __DIR__."/outfits/";
+class Outfit
+{
+    public $outfits_dir = __DIR__.'/outfits/';
 
     public $looktype = 0;
     public $addons = 0;
@@ -27,59 +24,61 @@ class Outfit {
 
     public $hexmount = false;
 
-    public $defaults = array(
-        "looktype" => 128,
-        "addons" => 0,
-        "movement" => 1,
-        "direction" => 3,
-        "mount" => 0,
-        "head" => "FFFFFF",
-        "body" => "FFFFFF",
-        "legs" => "FFFFFF",
-        "feet" => "FFFFFF"
-    );
+    public $defaults = [
+        'looktype' => 128,
+        'addons' => 0,
+        'movement' => 1,
+        'direction' => 3,
+        'mount' => 0,
+        'head' => 'FFFFFF',
+        'body' => 'FFFFFF',
+        'legs' => 'FFFFFF',
+        'feet' => 'FFFFFF',
+    ];
 
-    public $queries = array(
-        "looktype" => "id",
-        "addons" => "addons",
-        "movement" => "movement",
-        "direction" => "direction",
-        "mount" => "mount",
-        "head" => "head",
-        "body" => "body",
-        "legs" => "legs",
-        "feet" => "feet"
-    );
+    public $queries = [
+        'looktype' => 'id',
+        'addons' => 'addons',
+        'movement' => 'movement',
+        'direction' => 'direction',
+        'mount' => 'mount',
+        'head' => 'head',
+        'body' => 'body',
+        'legs' => 'legs',
+        'feet' => 'feet',
+    ];
 
-    public static $colors = array(
-		"FFFFFF", "FFD4BF", "FFE9BF", "FFFFBF", "E9FFBF", "D4FFBF",
-		"BFFFBF", "BFFFD4", "BFFFE9", "BFFFFF", "BFE9FF", "BFD4FF",
-		"BFBFFF", "D4BFFF", "E9BFFF", "FFBFFF", "FFBFE9", "FFBFD4",
-		"FFBFBF", "DADADA", "BF9F8F", "BFAF8F", "BFBF8F", "AFBF8F",
-		"9FBF8F", "8FBF8F", "8FBF9F", "8FBFAF", "8FBFBF", "8FAFBF",
-		"8F9FBF", "8F8FBF", "9F8FBF", "AF8FBF", "BF8FBF", "BF8FAF",
-		"BF8F9F", "BF8F8F", "B6B6B6", "BF7F5F", "BFAF8F", "BFBF5F",
-		"9FBF5F", "7FBF5F", "5FBF5F", "5FBF7F", "5FBF9F", "5FBFBF",
-		"5F9FBF", "5F7FBF", "5F5FBF", "7F5FBF", "9F5FBF", "BF5FBF",
-		"BF5F9F", "BF5F7F", "BF5F5F", "919191", "BF6A3F", "BF943F",
-		"BFBF3F", "94BF3F", "6ABF3F", "3FBF3F", "3FBF6A", "3FBF94",
-		"3FBFBF", "3F94BF", "3F6ABF", "3F3FBF", "6A3FBF", "943FBF",
-		"BF3FBF", "BF3F94", "BF3F6A", "BF3F3F", "6D6D6D", "FF5500",
-		"FFAA00", "FFFF00", "AAFF00", "54FF00", "00FF00", "00FF54",
-		"00FFAA", "00FFFF", "00A9FF", "0055FF", "0000FF", "5500FF",
-		"A900FF", "FE00FF", "FF00AA", "FF0055", "FF0000", "484848",
-		"BF3F00", "BF7F00", "BFBF00", "7FBF00", "3FBF00", "00BF00",
-		"00BF3F", "00BF7F", "00BFBF", "007FBF", "003FBF", "0000BF",
-		"3F00BF", "7F00BF", "BF00BF", "BF007F", "BF003F", "BF0000",
-		"242424", "7F2A00", "7F5500", "7F7F00", "557F00", "2A7F00",
-		"007F00", "007F2A", "007F55", "007F7F", "00547F", "002A7F",
-		"00007F", "2A007F", "54007F", "7F007F", "7F0055", "7F002A",
-		"7F0000"
-	);
+    public static $colors = [
+        'FFFFFF', 'FFD4BF', 'FFE9BF', 'FFFFBF', 'E9FFBF', 'D4FFBF',
+        'BFFFBF', 'BFFFD4', 'BFFFE9', 'BFFFFF', 'BFE9FF', 'BFD4FF',
+        'BFBFFF', 'D4BFFF', 'E9BFFF', 'FFBFFF', 'FFBFE9', 'FFBFD4',
+        'FFBFBF', 'DADADA', 'BF9F8F', 'BFAF8F', 'BFBF8F', 'AFBF8F',
+        '9FBF8F', '8FBF8F', '8FBF9F', '8FBFAF', '8FBFBF', '8FAFBF',
+        '8F9FBF', '8F8FBF', '9F8FBF', 'AF8FBF', 'BF8FBF', 'BF8FAF',
+        'BF8F9F', 'BF8F8F', 'B6B6B6', 'BF7F5F', 'BFAF8F', 'BFBF5F',
+        '9FBF5F', '7FBF5F', '5FBF5F', '5FBF7F', '5FBF9F', '5FBFBF',
+        '5F9FBF', '5F7FBF', '5F5FBF', '7F5FBF', '9F5FBF', 'BF5FBF',
+        'BF5F9F', 'BF5F7F', 'BF5F5F', '919191', 'BF6A3F', 'BF943F',
+        'BFBF3F', '94BF3F', '6ABF3F', '3FBF3F', '3FBF6A', '3FBF94',
+        '3FBFBF', '3F94BF', '3F6ABF', '3F3FBF', '6A3FBF', '943FBF',
+        'BF3FBF', 'BF3F94', 'BF3F6A', 'BF3F3F', '6D6D6D', 'FF5500',
+        'FFAA00', 'FFFF00', 'AAFF00', '54FF00', '00FF00', '00FF54',
+        '00FFAA', '00FFFF', '00A9FF', '0055FF', '0000FF', '5500FF',
+        'A900FF', 'FE00FF', 'FF00AA', 'FF0055', 'FF0000', '484848',
+        'BF3F00', 'BF7F00', 'BFBF00', '7FBF00', '3FBF00', '00BF00',
+        '00BF3F', '00BF7F', '00BFBF', '007FBF', '003FBF', '0000BF',
+        '3F00BF', '7F00BF', 'BF00BF', 'BF007F', 'BF003F', 'BF0000',
+        '242424', '7F2A00', '7F5500', '7F7F00', '557F00', '2A7F00',
+        '007F00', '007F2A', '007F55', '007F7F', '00547F', '002A7F',
+        '00007F', '2A007F', '54007F', '7F007F', '7F0055', '7F002A',
+        '7F0000',
+    ];
 
-    public function __construct($options = array()){
-        if(isset($options['defaults']))
+    public function __construct($options = [])
+    {
+        if (isset($options['defaults'])) {
             $this->defaults = array_merge($this->defaults, $options['defaults']);
+        }
 
         $this->looktype = $this->defaults['looktype'];
         $this->addons = $this->defaults['addons'];
@@ -91,16 +90,19 @@ class Outfit {
         $this->legs = $this->defaults['legs'];
         $this->feet = $this->defaults['feet'];
 
-        if(isset($options['queries']))
+        if (isset($options['queries'])) {
             $this->queries = array_merge($this->queries, $options['queries']);
+        }
 
-        if(isset($options['query']) && $options['query'] == true)
+        if (isset($options['query']) && $options['query'] == true) {
             $this->queriefy();
+        }
 
-        if(isset($options['hexmount']) && $options['hexmount'] == true)
+        if (isset($options['hexmount']) && $options['hexmount'] == true) {
             $this->hexmount = true;
+        }
 
-        $verboseColors = array(
+        $verboseColors = [
             'black' => '000000',
             'white' => 'FFFFFF',
             'gray' => '777777',
@@ -147,14 +149,15 @@ class Outfit {
             'flat-clouds' => 'ecf0f1',
             'flat-silver' => 'bdc3c7',
             'flat-concrete' => '95a5a6',
-            'flat-asbestos' => '7f8c8d'
-        );
+            'flat-asbestos' => '7f8c8d',
+        ];
         self::$colors = array_merge(self::$colors, $verboseColors);
 
         return $this;
     }
 
-    public function queriefy(){
+    public function queriefy()
+    {
         $q = $this->queries;
         isset($_GET[$q['looktype']]) ? $this->looktype = $_GET[$q['looktype']] : null;
         isset($_GET[$q['addons']]) ? $this->addons = $_GET[$q['addons']] : null;
@@ -169,99 +172,105 @@ class Outfit {
         return $this;
     }
 
-    public function render(){
-
+    public function render()
+    {
         $basepath = $this->outfits_dir;
 
         // Setup and validates
         $looktype = $this->looktype;
         $movement = $this->movement;
-        if(!in_array($movement, array(1,2,3))){
+        if (! in_array($movement, [1, 2, 3])) {
             $movement = 1;
         }
         $direction = $this->direction;
-        if(!in_array($direction, array(1,2,3,4))){
+        if (! in_array($direction, [1, 2, 3, 4])) {
             $direction = 3;
         }
         $addons = $this->addons;
-        if(!in_array($addons, array(0,1,2,3))){
+        if (! in_array($addons, [0, 1, 2, 3])) {
             $addons = 0;
         }
         $mountid = $this->mount;
-        if($this->hexmount == true){
+        if ($this->hexmount == true) {
             $mountid = ($mountid & 0xFFFF);
         }
         $haveTemplate = true;
         $mountstate = 1;
-        if($mountid > 0)
+        if ($mountid > 0) {
             $mountstate = 2;
+        }
 
         // Setup Paths
-        $looktype_check = $basepath  . "{$looktype}/1_1_1_1.png";
-        $outfit         = $basepath  . "{$looktype}/{$movement}_{$mountstate}_1_{$direction}.png";
-        $outfit_tpl     = $basepath  . "{$looktype}/{$movement}_{$mountstate}_1_{$direction}_template.png";
-        $addon1         = $basepath  . "{$looktype}/{$movement}_{$mountstate}_2_{$direction}.png";
-        $addon1_tpl     = $basepath  . "{$looktype}/{$movement}_{$mountstate}_2_{$direction}_template.png";
-        $addon2         = $basepath  . "{$looktype}/{$movement}_{$mountstate}_3_{$direction}.png";
-        $addon2_tpl     = $basepath  . "{$looktype}/{$movement}_{$mountstate}_3_{$direction}_template.png";
-        $mount          = $basepath  . "{$mountid}/{$movement}_1_1_{$direction}.png";
+        $looktype_check = $basepath."{$looktype}/1_1_1_1.png";
+        $outfit = $basepath."{$looktype}/{$movement}_{$mountstate}_1_{$direction}.png";
+        $outfit_tpl = $basepath."{$looktype}/{$movement}_{$mountstate}_1_{$direction}_template.png";
+        $addon1 = $basepath."{$looktype}/{$movement}_{$mountstate}_2_{$direction}.png";
+        $addon1_tpl = $basepath."{$looktype}/{$movement}_{$mountstate}_2_{$direction}_template.png";
+        $addon2 = $basepath."{$looktype}/{$movement}_{$mountstate}_3_{$direction}.png";
+        $addon2_tpl = $basepath."{$looktype}/{$movement}_{$mountstate}_3_{$direction}_template.png";
+        $mount = $basepath."{$mountid}/{$movement}_1_1_{$direction}.png";
 
         // Check if is available looktype and set $image,
         // if not, it uses male citizen
-        if(file_exists($looktype_check)){
-            if(!file_exists($outfit) && $mountstate == 2){
+        if (file_exists($looktype_check)) {
+            if (! file_exists($outfit) && $mountstate == 2) {
                 $this->mount = 0;
+
                 return $this->render();
             }
-            if(!file_exists($outfit) && $movement != 1){
+            if (! file_exists($outfit) && $movement != 1) {
                 $this->movement = 1;
+
                 return $this->render();
             }
-            if(!file_exists($outfit) && $direction == 3){
+            if (! file_exists($outfit) && $direction == 3) {
                 $this->direction = 1;
+
                 return $this->render();
             }
             $image = imagecreatefrompng($outfit);
         } else {
             $this->looktype = 128;
+
             return $this->render();
         }
 
         // Check if has template
         // monsters dont have template (with exceptions like elf, frog...)
-        if(file_exists($outfit_tpl)){
+        if (file_exists($outfit_tpl)) {
             $template = imagecreatefrompng($outfit_tpl);
         } else {
             $haveTemplate = false;
         }
 
         //addons
-        if($addons == 1 || $addons == 3){
-            if(file_exists($addon1)){
+        if ($addons == 1 || $addons == 3) {
+            if (file_exists($addon1)) {
                 $addon1_image = imagecreatefrompng($addon1);
                 self::overlay($image, $addon1_image);
                 $addon1_template_image = imagecreatefrompng($addon1_tpl);
-    			self::overlay($template, $addon1_template_image);
+                self::overlay($template, $addon1_template_image);
             }
         }
-        if($addons == 2 || $addons == 3){
-            if(file_exists($addon2)){
+        if ($addons == 2 || $addons == 3) {
+            if (file_exists($addon2)) {
                 $addon2_image = imagecreatefrompng($addon2);
                 self::overlay($image, $addon2_image);
                 $addon2_template_image = imagecreatefrompng($addon2_tpl);
-    			self::overlay($template, $addon2_template_image);
+                self::overlay($template, $addon2_template_image);
             }
         }
 
         // paint if has template
-        if($haveTemplate)
+        if ($haveTemplate) {
             self::colorize($image, $template, $this->head, $this->body, $this->legs, $this->feet);
+        }
 
         // add mount if have
-        if($mountid > 0){
-            if(file_exists($mount)){
+        if ($mountid > 0) {
+            if (file_exists($mount)) {
                 $mount_image = imagecreatefrompng($mount);
-                if(imagesx($mount_image) < 64){
+                if (imagesx($mount_image) < 64) {
                     //transform 32x32 into 64x64
                     $base_mount = imagecreatetruecolor(64, 64);
                     imagesavealpha($base_mount, true);
@@ -279,7 +288,7 @@ class Outfit {
         }
 
         // transform 32x32 into 64x64
-        if(imagesx($image) < 64){
+        if (imagesx($image) < 64) {
             $base = imagecreatetruecolor(64, 64);
             imagesavealpha($base, true);
             imagefill($base, 0, 0, imagecolorallocatealpha($base, 0, 0, 0, 127));
@@ -294,55 +303,56 @@ class Outfit {
     }
 
     /**
-    *
-    * Image helpers (static functions)
-    * Author: Kamil Karkus <kaker@wp.eu>
-    * adapted by Renato Ribeiro
-    *
-    */
-
-    public static function overlay(&$destImg, &$overlayImg) {
+     * Image helpers (static functions)
+     * Author: Kamil Karkus <kaker@wp.eu>
+     * adapted by Renato Ribeiro.
+     */
+    public static function overlay(&$destImg, &$overlayImg)
+    {
         $imgW = min(imagesx($destImg), imagesx($overlayImg));
         $imgH = min(imagesy($destImg), imagesy($overlayImg));
-		for ($y = 0; $y < $imgH; $y++) {
-			for ($x = 0; $x < $imgW; $x++) {
-				$ovrARGB = imagecolorat($overlayImg, $x, $y);
-				$ovrA = ($ovrARGB >> 24) << 1;
-				$ovrR = $ovrARGB >> 16 & 0xFF;
-				$ovrG = $ovrARGB >> 8 & 0xFF;
-				$ovrB = $ovrARGB & 0xFF;
+        for ($y = 0; $y < $imgH; $y++) {
+            for ($x = 0; $x < $imgW; $x++) {
+                $ovrARGB = imagecolorat($overlayImg, $x, $y);
+                $ovrA = ($ovrARGB >> 24) << 1;
+                $ovrR = $ovrARGB >> 16 & 0xFF;
+                $ovrG = $ovrARGB >> 8 & 0xFF;
+                $ovrB = $ovrARGB & 0xFF;
 
-				$change = false;
-				if ($ovrA == 0) {
-					$dstR = $ovrR;
-					$dstG = $ovrG;
-					$dstB = $ovrB;
-					$change = true;
-				} elseif ($ovrA < 254) {
-					$dstARGB = imagecolorat($destImg, $x, $y);
-					$dstR = $dstARGB >> 16 & 0xFF;
-					$dstG = $dstARGB >> 8 & 0xFF;
-					$dstB = $dstARGB & 0xFF;
+                $change = false;
+                if ($ovrA == 0) {
+                    $dstR = $ovrR;
+                    $dstG = $ovrG;
+                    $dstB = $ovrB;
+                    $change = true;
+                } elseif ($ovrA < 254) {
+                    $dstARGB = imagecolorat($destImg, $x, $y);
+                    $dstR = $dstARGB >> 16 & 0xFF;
+                    $dstG = $dstARGB >> 8 & 0xFF;
+                    $dstB = $dstARGB & 0xFF;
 
-					$dstR = (($ovrR * (0xFF - $ovrA)) >> 8) + (($dstR * $ovrA) >> 8);
-					$dstG = (($ovrG * (0xFF - $ovrA)) >> 8) + (($dstG * $ovrA) >> 8);
-					$dstB = (($ovrB * (0xFF - $ovrA)) >> 8) + (($dstB * $ovrA) >> 8);
-					$change = true;
-				}
-				if ($change) {
-					$dstRGB = imagecolorallocatealpha($destImg, $dstR, $dstG, $dstB, 0);
-					imagesetpixel($destImg, $x, $y, $dstRGB);
-				}
-			}
-		}
-		return $destImg;
-	}
+                    $dstR = (($ovrR * (0xFF - $ovrA)) >> 8) + (($dstR * $ovrA) >> 8);
+                    $dstG = (($ovrG * (0xFF - $ovrA)) >> 8) + (($dstG * $ovrA) >> 8);
+                    $dstB = (($ovrB * (0xFF - $ovrA)) >> 8) + (($dstB * $ovrA) >> 8);
+                    $change = true;
+                }
+                if ($change) {
+                    $dstRGB = imagecolorallocatealpha($destImg, $dstR, $dstG, $dstB, 0);
+                    imagesetpixel($destImg, $x, $y, $dstRGB);
+                }
+            }
+        }
 
-    public static function colorizePixel($color, &$_r, &$_g, &$_b){
-        if(isset(self::$colors[$color]))
+        return $destImg;
+    }
+
+    public static function colorizePixel($color, &$_r, &$_g, &$_b)
+    {
+        if (isset(self::$colors[$color])) {
             $color = self::$colors[$color];
+        }
 
-        $value = hexdec("0x" . ltrim($color, '#'));
+        $value = hexdec('0x'.ltrim($color, '#'));
         $ro = ($value & 0xFF0000) >> 16; // rgb outfit
         $go = ($value & 0xFF00) >> 8;
         $bo = ($value & 0xFF);
@@ -351,37 +361,38 @@ class Outfit {
         $_b = (int) ($_b * ($bo / 255));
     }
 
-    public static function colorize($_image_outfit, $_image_template, $_head, $_body, $_legs, $_feet){
+    public static function colorize($_image_outfit, $_image_template, $_head, $_body, $_legs, $_feet)
+    {
         for ($i = 0; $i < imagesy($_image_template); $i++) {
-			for ($j = 0; $j < imagesx($_image_template); $j++) {
-				$templatepixel = imagecolorat($_image_template, $j, $i);
-				$outfit = imagecolorat($_image_outfit, $j, $i);
+            for ($j = 0; $j < imagesx($_image_template); $j++) {
+                $templatepixel = imagecolorat($_image_template, $j, $i);
+                $outfit = imagecolorat($_image_outfit, $j, $i);
 
-				if ($templatepixel == $outfit)
-					continue;
+                if ($templatepixel == $outfit) {
+                    continue;
+                }
 
-				$rt = ($templatepixel >> 16) & 0xFF;
-				$gt = ($templatepixel >> 8) & 0xFF;
-				$bt = $templatepixel & 0xFF;
-				$ro = ($outfit >> 16) & 0xFF;
-				$go = ($outfit >> 8) & 0xFF;
-				$bo = $outfit & 0xFF;
+                $rt = ($templatepixel >> 16) & 0xFF;
+                $gt = ($templatepixel >> 8) & 0xFF;
+                $bt = $templatepixel & 0xFF;
+                $ro = ($outfit >> 16) & 0xFF;
+                $go = ($outfit >> 8) & 0xFF;
+                $bo = $outfit & 0xFF;
 
-				if ($rt && $gt && !$bt) { // yellow == head
-					self::colorizePixel($_head, $ro, $go, $bo);
-				} else if ($rt && !$gt && !$bt) { // red == body
-					self::colorizePixel($_body, $ro, $go, $bo);
-				} else if (!$rt && $gt && !$bt) { // green == legs
-					self::colorizePixel($_legs, $ro, $go, $bo);
-				} else if (!$rt && !$gt && $bt) { // blue == feet
-					self::colorizePixel($_feet, $ro, $go, $bo);
-				} else {
-					continue; // if nothing changed, skip the change of pixel
-				}
+                if ($rt && $gt && ! $bt) { // yellow == head
+                    self::colorizePixel($_head, $ro, $go, $bo);
+                } elseif ($rt && ! $gt && ! $bt) { // red == body
+                    self::colorizePixel($_body, $ro, $go, $bo);
+                } elseif (! $rt && $gt && ! $bt) { // green == legs
+                    self::colorizePixel($_legs, $ro, $go, $bo);
+                } elseif (! $rt && ! $gt && $bt) { // blue == feet
+                    self::colorizePixel($_feet, $ro, $go, $bo);
+                } else {
+                    continue; // if nothing changed, skip the change of pixel
+                }
 
-				imagesetpixel($_image_outfit, $j, $i, imagecolorallocate($_image_outfit, $ro, $go, $bo));
-			}
-		}
+                imagesetpixel($_image_outfit, $j, $i, imagecolorallocate($_image_outfit, $ro, $go, $bo));
+            }
+        }
     }
-
 }

@@ -2,10 +2,8 @@
 
 namespace Bitaac\Account\Resources\Seeds;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Bitaac\Account\Models\BitAccount;
-use Illuminate\Database\Eloquent\Model;
 
 class AccountPropertiesSeeder extends Seeder
 {
@@ -17,10 +15,10 @@ class AccountPropertiesSeeder extends Seeder
     public function run()
     {
         $accounts = app('account')->all();
-        
+
         foreach ($accounts as $account) {
             if ($account->bit) {
-                continue; 
+                continue;
             }
 
             $bitaccounts = new BitAccount;

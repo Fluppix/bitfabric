@@ -2,7 +2,6 @@
 
 namespace Bitaac\Forum\Http\Controllers\Thread;
 
-use Illuminate\Http\Request;
 use Bitaac\Forum\Models\Board;
 use Bitaac\Forum\Models\ForumPost;
 use App\Http\Controllers\Controller;
@@ -19,7 +18,7 @@ class CreateController extends Controller
     public function form($board)
     {
         return view('bitaac::forum.thread.create', [
-            'board' => $board
+            'board' => $board,
         ]);
     }
 
@@ -34,11 +33,11 @@ class CreateController extends Controller
         $exists = ForumPost::where('title', $title = trim($request->get('title')));
 
         if ($exists->exists()) {
-            $number  = 0;
+            $number = 0;
             $proceed = false;
             while ($proceed == false) {
                 $number = $number + 1;
-                $title  = $exists->first()->title . ' ' . $number;
+                $title = $exists->first()->title.' '.$number;
 
                 if (! ForumPost::where('title', $title)->exists()) {
                     $proceed = true;
@@ -47,11 +46,11 @@ class CreateController extends Controller
         }
 
         $post = new ForumPost;
-        $post->board_id   = $board->id;
-        $post->player_id  = $request->get('author');
-        $post->title      = $title;
-        $post->content    = $request->get('content');
-        $post->timestamp  = time();
+        $post->board_id = $board->id;
+        $post->player_id = $request->get('author');
+        $post->title = $title;
+        $post->content = $request->get('content');
+        $post->timestamp = time();
         $post->save();
 
         return redirect(url_e('/forum/:board/:title', [

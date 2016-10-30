@@ -37,17 +37,17 @@ class PaypalController extends Controller
         $config = (object) config('bitaac.paytal.paypal.auth');
 
         $gateway->authorize([
-            'client'    => $config->client, 
+            'client'    => $config->client,
             'secret'    => $config->secret,
             'returnUrl' => route($config->returnUrl),
-            'cancelUrl' => route($config->cancelUrl)
+            'cancelUrl' => route($config->cancelUrl),
         ]);
 
         $gateway->purchase([
-            'amount'   => $request->get('amount'), 
-            'currency' => config('bitaac.paytal.paypal.currency'), 
+            'amount'   => $request->get('amount'),
+            'currency' => config('bitaac.paytal.paypal.currency'),
             'custom'   => auth()->id(),
-            'name'     => 'Donation Points'
+            'name'     => 'Donation Points',
         ]);
 
         return $gateway->redirect();
@@ -62,20 +62,20 @@ class PaypalController extends Controller
     public function return(Request $request)
     {
         // Init a new paytal object, and authorize to choosen
-        // payment gateway. 
+        // payment gateway.
         $gateway = Paytal::create('paypal.rest');
 
         $config = (object) config('bitaac.paytal.paypal.auth');
 
         $gateway->authorize([
-            'client' => $config->client, 
-            'secret' => $config->secret
+            'client' => $config->client,
+            'secret' => $config->secret,
         ]);
 
         // Complete/get the payment
         $response = $gateway->completePayment($request->all());
 
-        $payment = Payment::where(function($query) use($response) {
+        $payment = Payment::where(function ($query) use ($response) {
             $query->where('payment_id', $response->payment->parent_payment);
             $query->where('method', 'paypal');
         });
@@ -86,11 +86,11 @@ class PaypalController extends Controller
 
         $payment = new Payment;
         $payment->payment_id = $response->payment->parent_payment;
-        $payment->method     = 'paypal';
-        $payment->currency   = $response->payment->amount->currency;
-        $payment->amount     = $response->payment->amount->total;
+        $payment->method = 'paypal';
+        $payment->currency = $response->payment->amount->currency;
+        $payment->amount = $response->payment->amount->total;
         $payment->account_id = $response->payment->custom;
-        $payment->points     = config('bitaac.paytal.paypal.offers')[$response->payment->amount->total];
+        $payment->points = config('bitaac.paytal.paypal.offers')[$response->payment->amount->total];
         $payment->save();
 
         $user = auth()->user()->bit;

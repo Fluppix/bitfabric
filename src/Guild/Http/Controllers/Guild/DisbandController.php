@@ -8,7 +8,7 @@ use Bitaac\Guild\Http\Requests\Guild\DisbandRequest;
 class DisbandController extends Controller
 {
     /**
-     * Show the disband guild form to the user. 
+     * Show the disband guild form to the user.
      *
      * @param \Bitaac\Guild\Models\Guild  $guild
      * @return \Illuminate\Http\Response

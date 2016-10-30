@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest 
+class EditRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +14,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'image'
+            'logo' => 'image',
         ];
     }
 

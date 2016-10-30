@@ -2,7 +2,6 @@
 
 namespace Bitaac\Contracts;
 
-interface GuildInvite 
+interface GuildInvite
 {
-
 }

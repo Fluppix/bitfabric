@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild\Member;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class InviteRequest extends FormRequest 
+class InviteRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +14,7 @@ class InviteRequest extends FormRequest
     public function rules()
     {
         return [
-            'character' => 'required|exists:players,name'
+            'character' => 'required|exists:players,name',
         ];
     }
 

@@ -19,7 +19,7 @@ class UnlockController extends Controller
         if (! $thread->locked) {
             return redirect(url_e('/forum/:board/:thread', [
                 'thread' => $thread->title,
-                'board'  => $board->title
+                'board'  => $board->title,
             ]));
         }
 

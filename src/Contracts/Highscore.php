@@ -2,7 +2,6 @@
 
 namespace Bitaac\Contracts;
 
-interface Highscore 
+interface Highscore
 {
-
 }

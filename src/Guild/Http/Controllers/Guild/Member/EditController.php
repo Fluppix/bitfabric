@@ -2,14 +2,13 @@
 
 namespace Bitaac\Guild\Http\Controllers\Guild\Member;
 
-use Auth;
 use App\Http\Controllers\Controller;
 use Bitaac\Guild\Http\Requests\Guild\Member\EditRequest;
 
 class EditController extends Controller
 {
     /**
-     * Show the member edit form to the user. 
+     * Show the member edit form to the user.
      *
      * @return \Illuminate\Http\Response
      */

@@ -2,13 +2,12 @@
 
 namespace Bitaac\Guild\Providers;
 
-use Illuminate\Routing\Router;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class GuildServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Holds all service providers we want to register
+     * Holds all service providers we want to register.
      *
      * @var array
      */
@@ -26,7 +25,7 @@ class GuildServiceProvider extends AggregateServiceProvider
         require_once __DIR__.'/../Http/routes.php';
 
         $this->publishes([
-            __DIR__.'/../Resources/Config' => config_path('bitaac')
+            __DIR__.'/../Resources/Config' => config_path('bitaac'),
         ], 'config');
     }
 
