@@ -1,6 +1,6 @@
 <?php
 
-namespace Bitaac\Core\Http\Controllers;
+namespace Bitaac\Community\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Bitaac\Forum\Models\Board;
