@@ -21,7 +21,7 @@ class ForumServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $migrations = [
-        __DIR__.'/Resources/Migrations'
+        __DIR__.'/Resources/Migrations',
     ];
 
     /**
@@ -41,7 +41,7 @@ class ForumServiceProvider extends AggregateServiceProvider
     public function boot()
     {
         parent::boot();
-        
+
         $this->publishes([
             __DIR__.'/Config' => config_path('bitaac'),
         ], 'config');

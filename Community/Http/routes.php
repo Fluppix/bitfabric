@@ -12,4 +12,3 @@
 $router->get('/', 'WelcomeController@index');
 $router->get('/online', 'OnlineController@index');
 $router->get('/deaths', 'DeathsController@index');
-
