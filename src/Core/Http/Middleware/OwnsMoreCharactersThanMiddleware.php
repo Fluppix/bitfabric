@@ -15,7 +15,7 @@ class OwnsMoreCharactersThanMiddleware
      * @param  integer  $amount
      * @return mixed
      */
-    public function handle($request, Closure $next, $)
+    public function handle($request, Closure $next, $amount)
     {
         if (auth()->check() && auth()->user()->characters < $amount) {
             // 
