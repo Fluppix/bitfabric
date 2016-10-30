@@ -2,8 +2,6 @@
 
 namespace Bitaac\Forum\Http\Controllers\Thread;
 
-use Illuminate\Http\Request;
-use Bitaac\Forum\Board;
 use App\Http\Controllers\Controller;
 
 class ShowController extends Controller
