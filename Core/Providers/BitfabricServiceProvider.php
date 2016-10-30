@@ -81,8 +81,6 @@ class BitfabricServiceProvider extends AggregateServiceProvider
             $this->app['url']->forceSchema('https');
         }
 
-        require_once __DIR__.'/../Http/routes.php';
-
         $this->publishes([
             __DIR__.'/../Config' => config_path('bitaac'),
         ], 'config');

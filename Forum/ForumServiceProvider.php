@@ -7,6 +7,24 @@ use Bitaac\Core\Providers\AggregateServiceProvider;
 class ForumServiceProvider extends AggregateServiceProvider
 {
     /**
+     * The provider routes file paths.
+     *
+     * @var array
+     */
+    protected $routes = [
+        'Bitaac\Forum\Http\Controllers' => __DIR__.'/Http/routes.php',
+    ];
+
+    /**
+     * The provider migration paths.
+     *
+     * @var array
+     */
+    protected $migrations = [
+        __DIR__.'/Resources/Migrations'
+    ];
+
+    /**
      * Holds all contracts and models we want to bind.
      *
      * @var array
@@ -16,23 +34,14 @@ class ForumServiceProvider extends AggregateServiceProvider
     ];
 
     /**
-     * Holds all service providers we want to register.
-     *
-     * @var array
-     */
-    protected $providers = [
-        //
-    ];
-
-    /**
      * Bootstrap the application events.
      *
      * @return void
      */
     public function boot()
     {
-        require_once __DIR__.'/Http/routes.php';
-
+        parent::boot();
+        
         $this->publishes([
             __DIR__.'/Config' => config_path('bitaac'),
         ], 'config');
@@ -45,8 +54,6 @@ class ForumServiceProvider extends AggregateServiceProvider
      */
     public function register()
     {
-        $this->loadMigrationsFrom(__DIR__.'/Resources/Migrations');
-
         $this->app['seed.handler']->register(
             \Bitaac\Forum\Resources\Seeds\DatabaseSeeder::class
         );

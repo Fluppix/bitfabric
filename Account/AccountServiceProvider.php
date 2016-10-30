@@ -7,13 +7,31 @@ use Bitaac\Core\Providers\AggregateServiceProvider;
 class AccountServiceProvider extends AggregateServiceProvider
 {
     /**
+     * The provider routes file paths.
+     *
+     * @var array
+     */
+    protected $routes = [
+        'Bitaac\Account\Http\Controllers' => __DIR__.'/Http/routes.php',
+    ];
+
+    /**
+     * The provider migration paths.
+     *
+     * @var array
+     */
+    protected $migrations = [
+        __DIR__.'/Resources/Migrations'
+    ];
+
+    /**
      * Bootstrap the application events.
      *
      * @return void
      */
     public function boot()
     {
-        require_once __DIR__.'/Http/routes.php';
+        parent::boot();
 
         $this->publishes([
             __DIR__.'/Resources/Config' => config_path('bitaac'),
@@ -27,8 +45,6 @@ class AccountServiceProvider extends AggregateServiceProvider
      */
     public function register()
     {
-        $this->loadMigrationsFrom(__DIR__.'/Resources/Migrations');
-
         $this->app['seed.handler']->register(
             \Bitaac\Account\Resources\Seeds\DatabaseSeeder::class
         );

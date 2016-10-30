@@ -105,10 +105,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::map();
 
-        $router = $this->app['router'];
-
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require __DIR__.'/../Http/routes.php';
-        });
+        // ..
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bitaac\Core\Http\Requests\Auth;
+namespace Bitaac\Account\Http\Requests\Auth;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;

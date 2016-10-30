@@ -7,12 +7,21 @@ use Bitaac\Core\Providers\AggregateServiceProvider;
 class GuildServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Holds all service providers we want to register.
+     * The provider routes file paths.
      *
      * @var array
      */
-    protected $providers = [
-        //
+    protected $routes = [
+        'Bitaac\Guild\Http\Controllers' => __DIR__.'/Http/routes.php',
+    ];
+
+    /**
+     * The provider migration paths.
+     *
+     * @var array
+     */
+    protected $migrations = [
+        __DIR__.'/Resources/Migrations'
     ];
 
     /**
@@ -22,7 +31,7 @@ class GuildServiceProvider extends AggregateServiceProvider
      */
     public function boot()
     {
-        require_once __DIR__.'/Http/routes.php';
+        parent::boot();
 
         $this->publishes([
             __DIR__.'/Resources/Config' => config_path('bitaac'),
@@ -36,8 +45,6 @@ class GuildServiceProvider extends AggregateServiceProvider
      */
     public function register()
     {
-        $this->loadMigrationsFrom(__DIR__.'/Resources/Migrations');
-
         $this->app['seed.handler']->register(
             \Bitaac\Guild\Resources\Seeds\DatabaseSeeder::class
         );

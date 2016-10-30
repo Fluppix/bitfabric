@@ -4,7 +4,7 @@ namespace Bitaac\Account\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
-use Bitaac\Core\Http\Requests\Auth\RegisterRequest;
+use Bitaac\Account\Http\Requests\Auth\RegisterRequest;
 
 class RegisterController extends Controller
 {

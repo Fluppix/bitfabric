@@ -2,29 +2,17 @@
 
 /*
 |--------------------------------------------------------------------------
-| Assign the router & namespace to a variable
-|--------------------------------------------------------------------------
-|
-| ...
-|
-*/
-$router = app('router');
-$namespace = 'Bitaac\Account\Http\Controllers';
-
-/*
-|--------------------------------------------------------------------------
 | /register & /login routes
 |--------------------------------------------------------------------------
 |
 | ...
 |
 */
-$router->group(['middleware' => ['web', 'guest'], 'namespace' => $namespace], function ($router) {
-    $router->get('/login', 'Auth\LoginController@form');
-    $router->post('/login', 'Auth\LoginController@post');
-    $router->get('/register', 'Auth\RegisterController@form');
-    $router->post('/register', 'Auth\RegisterController@post');
-});
+
+$router->get('/login', 'Auth\LoginController@form');
+$router->post('/login', 'Auth\LoginController@post');
+$router->get('/register', 'Auth\RegisterController@form');
+$router->post('/register', 'Auth\RegisterController@post');
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +22,8 @@ $router->group(['middleware' => ['web', 'guest'], 'namespace' => $namespace], fu
 | ...
 |
 */
-$router->group(['prefix' => '/account', 'middleware' => ['web', 'auth', 'email.update'], 'namespace' => $namespace], function ($router) {
+
+$router->group(['prefix' => '/account', 'middleware' => ['auth', 'email.update']], function ($router) {
     $router->get('/', 'AccountController@index');
     $router->get('/logout', 'AccountController@logout');
     $router->get('/password', 'Change\PasswordController@form');

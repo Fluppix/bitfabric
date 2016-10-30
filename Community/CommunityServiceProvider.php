@@ -7,12 +7,12 @@ use Bitaac\Core\Providers\AggregateServiceProvider;
 class CommunityServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Holds all service providers we want to register.
+     * The provider routes file paths.
      *
      * @var array
      */
-    protected $providers = [
-        //
+    protected $routes = [
+        'Bitaac\Community\Http\Controllers' => __DIR__.'/Http/routes.php',
     ];
 
     /**
@@ -22,7 +22,7 @@ class CommunityServiceProvider extends AggregateServiceProvider
      */
     public function boot()
     {
-        require_once __DIR__.'/Http/routes.php';
+        parent::boot();
 
         $this->publishes([
             __DIR__.'/Config' => config_path('bitaac'),
