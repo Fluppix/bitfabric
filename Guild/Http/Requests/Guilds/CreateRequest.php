@@ -14,8 +14,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|alpha_space|max_words:3|unique:guilds,name',
-            'leader' => 'required|owns_character|guildless',
+            'name'   => ['required', 'alpha_space', 'max_words:3', 'unique:guilds,name'],
+            'leader' => ['required', 'owns_character', 'guildless'],
         ];
     }
 

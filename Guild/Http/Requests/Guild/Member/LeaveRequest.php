@@ -14,7 +14,7 @@ class LeaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'character' => 'required|integer|owns_character',
+            'character' => ['required', 'integer', 'owns_character'],
         ];
     }
 

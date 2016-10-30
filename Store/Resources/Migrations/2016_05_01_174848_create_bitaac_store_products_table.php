@@ -31,8 +31,6 @@ class CreateBitaacStoreProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('__bitaac_store_products', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('__bitaac_store_products');
     }
 }

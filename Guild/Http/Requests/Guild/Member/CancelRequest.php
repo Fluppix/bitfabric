@@ -14,7 +14,7 @@ class CancelRequest extends FormRequest
     public function rules()
     {
         return [
-            'character' => 'required|integer',
+            'character' => ['required', 'integer'],
         ];
     }
 

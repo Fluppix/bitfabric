@@ -14,7 +14,7 @@ class InviteRequest extends FormRequest
     public function rules()
     {
         return [
-            'character' => 'required|exists:players,name',
+            'character' => ['required', 'exists:players,name'],
         ];
     }
 

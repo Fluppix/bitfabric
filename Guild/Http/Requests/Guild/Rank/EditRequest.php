@@ -14,7 +14,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|between:3,15|rankname',
+            'name' => ['required', 'between:3,15', 'rankname'],
         ];
     }
 

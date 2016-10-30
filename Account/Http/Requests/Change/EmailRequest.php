@@ -9,8 +9,8 @@ class EmailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'required|email|unique:accounts,email',
-            'password' => 'required',
+            'email'    => ['required', 'email', 'unique:accounts'],
+            'password' => ['required'],
         ];
     }
 

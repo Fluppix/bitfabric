@@ -14,9 +14,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-               'title'   => 'required|between:3,60|forum_title',
-            'author'  => 'required|owns_character',
-            'content' => 'required|between:15,3000',
+            'title'   => ['required', 'between:3,60', 'forum_title'],
+            'author'  => ['required', 'owns_character'],
+            'content' => ['required', 'between:15,3000'],
         ];
     }
 

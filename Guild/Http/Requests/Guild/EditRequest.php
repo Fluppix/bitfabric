@@ -14,7 +14,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'image',
+            'logo' => ['image'],
         ];
     }
 
