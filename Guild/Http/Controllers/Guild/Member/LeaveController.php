@@ -24,7 +24,7 @@ class LeaveController extends Controller
      */
     public function post(LeaveRequest $request, $guild)
     {
-        $member = app('guild.member')->where(function ($query) use ($guild,$request) {
+        $member = app('guild.member')->where(function ($query) use ($guild, $request) {
             $query->where('player_id', $request->get('character'));
             $query->where('guild_id', $guild->id);
         })->delete();

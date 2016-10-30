@@ -41,7 +41,7 @@ $router->group(['prefix' => '/guild'], function ($router) {
 
 $router->group(['prefix' => '/guilds'], function ($router) {
     $router->get('/{guild}/logo', 'ShowController@logo');
-    $router->get('/',             'Guilds\GuildsController@index');
-    $router->get('/create',       'Guilds\CreateController@form')->middleware(['auth']);
-    $router->post('/create',      'Guilds\CreateController@post')->middleware(['auth']);
+    $router->get('/', 'Guilds\GuildsController@index');
+    $router->get('/create', 'Guilds\CreateController@form')->middleware(['auth']);
+    $router->post('/create', 'Guilds\CreateController@post')->middleware(['auth']);
 });

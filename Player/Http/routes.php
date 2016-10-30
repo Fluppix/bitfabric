@@ -14,4 +14,3 @@ $router->group(['prefix' => '/character'], function ($router) {
     $router->post('/', 'SearchController@post');
     $router->get('/{player}', 'CharacterController@index')->middleware('character.exists');
 });
-

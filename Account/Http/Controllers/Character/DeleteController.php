@@ -42,7 +42,7 @@ class DeleteController extends Controller
             return back()->withError('Password do not match.');
         }
 
-        $player = app('player')->where(function ($query) use ($user,$request) {
+        $player = app('player')->where(function ($query) use ($user, $request) {
             $query->where('account_id', $user->id);
             $query->where('name', $request->get('character'));
         });
