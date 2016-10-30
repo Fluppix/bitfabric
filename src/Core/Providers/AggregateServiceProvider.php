@@ -67,7 +67,9 @@ abstract class AggregateServiceProvider extends ServiceProvider
      */
     protected function registerMiddleware()
     {
-        if (! isset($this->middleware)) return;
+        if (! isset($this->middleware)) {
+            return;
+        }
 
         foreach ($this->middleware as $key => $middleware) {
             $this->app['router']->middleware($key, $middleware);
@@ -81,7 +83,9 @@ abstract class AggregateServiceProvider extends ServiceProvider
      */
     protected function registerProviders()
     {
-        if (! isset($this->providers)) return;
+        if (! isset($this->providers)) {
+            return;
+        }
 
         foreach ($this->providers as $provider) {
             $this->instances[] = $this->app->register($provider);
@@ -95,11 +99,13 @@ abstract class AggregateServiceProvider extends ServiceProvider
      */
     protected function registerBindings()
     {
-        if (! isset($this->bindings)) return;
+        if (! isset($this->bindings)) {
+            return;
+        }
 
         foreach ($this->bindings as $alias => $binding) {
             list($abstract, $concrete) = [key($binding), current($binding)];
-            
+
             $this->app->bind([$alias => $abstract], $concrete);
         }
     }

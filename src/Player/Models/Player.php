@@ -2,26 +2,25 @@
 
 namespace Bitaac\Player\Models;
 
-use DB;
 use Bitaac\Core\Database\Eloquent\Model;
 use Bitaac\Contracts\Player as Contract;
 
 class Player extends Model implements Contract
 {
     /**
-     * Table used by the model
+     * Table used by the model.
      */
     protected $table = 'players';
 
     /**
-     * Tell the model to not use timestamps
+     * Tell the model to not use timestamps.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Determine if the player is hidden
+     * Determine if the player is hidden.
      *
      * @return BitPlayer
      */
@@ -53,7 +52,7 @@ class Player extends Model implements Contract
     /**
      * Determine if player is pending deletion.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasPendingDeletion()
     {
@@ -63,7 +62,7 @@ class Player extends Model implements Contract
     /**
      * Get total forum posts made by player.
      *
-     * @return integer
+     * @return int
      */
     public function posts()
     {
@@ -78,7 +77,7 @@ class Player extends Model implements Contract
     public function link()
     {
         return url_e('/character/:name', [
-            'name' => $this->name
+            'name' => $this->name,
         ]);
     }
 
@@ -112,20 +111,20 @@ class Player extends Model implements Contract
     {
         $name = trim(strtolower($attributes['name']));
 
-        $character             = new $this;
-        $character->name       = ucwords($name);
+        $character = new $this;
+        $character->name = ucwords($name);
         $character->account_id = auth()->id();
-        $character->sex        = (int) $attributes['gender'];
-        $character->vocation   = (int) $attributes['vocation'];
-        $character->town_id    = (int) $attributes['town'];
+        $character->sex = (int) $attributes['gender'];
+        $character->vocation = (int) $attributes['vocation'];
+        $character->town_id = (int) $attributes['town'];
         $character->conditions = '';
-        $character->group_id   = 1;
+        $character->group_id = 1;
 
-        $character->looktype   = $character->sex ? 128 : 136;
-        $character->lookhead   = 78;
-        $character->lookbody   = 69;
-        $character->looklegs   = 58;
-        $character->lookfeet   = 76;
+        $character->looktype = $character->sex ? 128 : 136;
+        $character->lookhead = 78;
+        $character->lookbody = 69;
+        $character->looklegs = 58;
+        $character->lookfeet = 76;
 
         if ($level = value_args(config('bitaac.character.create-data.level'), $character)) {
             $character->level = $level;
@@ -136,12 +135,12 @@ class Player extends Model implements Contract
         }
 
         if ($health = value_args(config('bitaac.character.create-data.health'), $character)) {
-            $character->health    = $health;
+            $character->health = $health;
             $character->healthmax = $health;
         }
 
         if ($mana = value_args(config('bitaac.character.create-data.mana'), $character)) {
-            $character->mana    = $mana;
+            $character->mana = $mana;
             $character->manamax = $mana;
         }
 
@@ -155,7 +154,7 @@ class Player extends Model implements Contract
     /**
      * Get the online status associated with the current player.
      *
-     * @return boolean
+     * @return bool
      */
     public function playerOnline()
     {
@@ -176,17 +175,17 @@ class Player extends Model implements Contract
     /**
      * Determine if player is online or not.
      *
-     * @return boolean
+     * @return bool
      */
     public function isOnline()
     {
-        return (boolean) $this->playerOnline;
+        return (bool) $this->playerOnline;
     }
 
     /**
      * Get the online record.
      *
-     * @return integer
+     * @return int
      */
     public function getOnlineRecord()
     {

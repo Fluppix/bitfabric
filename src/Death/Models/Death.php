@@ -8,7 +8,7 @@ use Bitaac\Contracts\Death as Contract;
 class Death extends Model implements Contract
 {
     /**
-     * Table used by the model
+     * Table used by the model.
      */
     protected $table = 'player_deaths';
 

@@ -7,14 +7,14 @@ use Bitaac\Core\Database\Eloquent\Model;
 class Board extends Model
 {
     /**
-     * Table used by the model
+     * Table used by the model.
      *
      * @var string
      */
     protected $table = '__bitaac_forum_boards';
 
     /**
-     * Retrive all threads that belongs to board
+     * Retrive all threads that belongs to board.
      *
      * @return \Illuminate\Database\Relations
      */
@@ -24,7 +24,7 @@ class Board extends Model
     }
 
     /**
-     * Retrive board latest post info
+     * Retrive board latest post info.
      *
      * @return \Bitaac\Forum\Models\ForumPost
      */
@@ -34,19 +34,19 @@ class Board extends Model
     }
 
     /**
-     * Create a link to the board
+     * Create a link to the board.
      *
      * @return string
      */
     public function link()
     {
         return url_e('/forum/:board', [
-            'board' => $this->title
+            'board' => $this->title,
         ]);
     }
 
     /**
-     * Retrive all replies that belongs to board
+     * Retrive all replies that belongs to board.
      *
      * @return \Illuminate\Database\Relations
      */

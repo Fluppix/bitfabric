@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild\Rank;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest 
+class EditRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +14,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|between:3,15|rankname'
+            'name' => 'required|between:3,15|rankname',
         ];
     }
 

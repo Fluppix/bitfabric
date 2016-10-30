@@ -11,7 +11,7 @@ return [
     | mode across all pages and local URLs.
     |
     */
-    
+
     'https' => env('APP_HTTPS', false),
 
     /*
@@ -36,5 +36,5 @@ return [
     */
 
     'theme' => Bitaac\Theme\RetroThemeServiceProvider::class,
-    
+
 ];

@@ -2,10 +2,8 @@
 
 namespace Bitaac\Guild\Resources\Seeds;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Bitaac\Guild\Models\BitGuild;
-use Illuminate\Database\Eloquent\Model;
 
 class GuildPropertiesSeeder extends Seeder
 {
@@ -17,10 +15,10 @@ class GuildPropertiesSeeder extends Seeder
     public function run()
     {
         $guilds = app('guild')->all();
-        
+
         foreach ($guilds as $guild) {
             if ($guild->bitaac) {
-                continue; 
+                continue;
             }
 
             $bitguild = new BitGuild;

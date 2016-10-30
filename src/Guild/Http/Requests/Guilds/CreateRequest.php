@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guilds;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest 
+class CreateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,7 +15,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'name'   => 'required|alpha_space|max_words:3|unique:guilds,name',
-            'leader' => 'required|owns_character|guildless'
+            'leader' => 'required|owns_character|guildless',
         ];
     }
 

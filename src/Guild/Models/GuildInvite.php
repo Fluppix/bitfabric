@@ -7,7 +7,7 @@ use Bitaac\Contracts\GuildInvite as Contract;
 
 class GuildInvite extends Model implements Contract
 {
-	/**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -17,7 +17,7 @@ class GuildInvite extends Model implements Contract
     /**
      * Tell the model to ignore timestamps.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 

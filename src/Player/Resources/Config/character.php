@@ -66,16 +66,14 @@ return [
         |
         */
 
-        'health' => function($player)
-        {
-            list($gain, $gains) = array(5, config('bitaac.server.gains.health'));
+        'health' => function ($player) {
+            list($gain, $gains) = [5, config('bitaac.server.gains.health')];
 
-			if (isset($gains[$player->vocation]))
-			{
-				$gain = $gains[$player->vocation];
-			}
+            if (isset($gains[$player->vocation])) {
+                $gain = $gains[$player->vocation];
+            }
 
-			return formulae('health', $player, $gain);
+            return formulae('health', $player, $gain);
         },
 
         /*
@@ -87,17 +85,15 @@ return [
         |
         */
 
-        'mana' => function($player)
-		{
-			list($gain, $gains) = array(5, config('bitaac.server.gains.mana'));
+        'mana' => function ($player) {
+            list($gain, $gains) = [5, config('bitaac.server.gains.mana')];
 
-			if (isset($gains[$player->vocation]))
-			{
-				$gain = $gains[$player->vocation];
-			}
+            if (isset($gains[$player->vocation])) {
+                $gain = $gains[$player->vocation];
+            }
 
-			return formulae('mana', $player, $gain);
-		},
+            return formulae('mana', $player, $gain);
+        },
 
         /*
         |--------------------------------------------------------------------------
@@ -108,17 +104,15 @@ return [
         |
         */
 
-        'capacity' => function($player)
-		{
-			list($gain, $gains) = array(10, config('bitaac.server.gains.capacity'));
+        'capacity' => function ($player) {
+            list($gain, $gains) = [10, config('bitaac.server.gains.capacity')];
 
-			if (isset($gains[$player->vocation]))
-			{
-				$gain = $gains[$player->vocation];
-			}
+            if (isset($gains[$player->vocation])) {
+                $gain = $gains[$player->vocation];
+            }
 
-			return formulae('capacity', $player, $gain);
-		},
+            return formulae('capacity', $player, $gain);
+        },
 
     ],
 
@@ -132,7 +126,7 @@ return [
     */
 
     'create-vocations' => [
-        1,2,3,4
+        1, 2, 3, 4,
     ],
 
     /*
@@ -145,7 +139,7 @@ return [
     */
 
     'create-towns' => [
-        1,2,3,4
+        1, 2, 3, 4,
     ],
 
     /*
@@ -158,7 +152,7 @@ return [
     */
 
     'create-genders' => [
-        1,0
+        1, 0,
     ],
 
     /*
@@ -171,7 +165,7 @@ return [
     */
 
     'create-blocked-keywords' => [
-        'gm'
+        'gm',
     ],
 
 ];

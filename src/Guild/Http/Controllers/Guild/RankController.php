@@ -23,13 +23,13 @@ class RankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function post(EditRequest $request, $guild)
-    {   
+    {
         $rank = app('guild.rank')->find($request->get('rank'));
 
         if (is_null($rank) and $rank->guild_id != $guild->id) {
             return back()->withError(trans('guild.edit.ranks.fail'));
         }
-        
+
         $rank->name = $request->get('name');
         $rank->save();
 

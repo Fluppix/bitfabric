@@ -5,7 +5,6 @@ namespace Bitaac\Core\Handlers;
 use Closure;
 use Illuminate\Database\DatabaseManager;
 use Bitaac\Core\Database\Trigger;
-use Illuminate\Database\Query\Grammars\Grammar;
 
 class TriggerHandler
 {
@@ -160,14 +159,14 @@ class TriggerHandler
      * Drop a trigger.
      *
      * @param  \Apolune\Core\Database\Trigger  $trigger  null
-     * @return boolean
+     * @return bool
      */
     public function drop($trigger = null)
     {
         $name = $trigger instanceof Trigger ? $trigger->name() : $this->name($this->timing, $this->event, $this->table);
 
         return $this->query->unprepared(
-            sprintf("DROP TRIGGER `%s`;", $name)
+            sprintf('DROP TRIGGER `%s`;', $name)
         );
     }
 
@@ -198,7 +197,7 @@ class TriggerHandler
      */
     public function has($timing, $event, $table)
     {
-        return (boolean) $this->get($timing, $event, $table);
+        return (bool) $this->get($timing, $event, $table);
     }
 
     /**
@@ -243,7 +242,7 @@ class TriggerHandler
         $database = $this->query;
 
         array_walk($bindings, function (&$binding) use ($database) {
-            $binding = is_integer($binding) ? (int) $binding : $database->connection()->getPdo()->quote($binding);
+            $binding = is_int($binding) ? (int) $binding : $database->connection()->getPdo()->quote($binding);
         });
 
         return str_replace_array('\?', $bindings, $query);
@@ -259,6 +258,6 @@ class TriggerHandler
      */
     protected function name($timing, $event, $table)
     {
-        return strtolower(sprintf("%s_%s_%s", $timing, $event, $table));
+        return strtolower(sprintf('%s_%s_%s', $timing, $event, $table));
     }
 }

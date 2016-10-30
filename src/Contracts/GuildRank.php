@@ -4,5 +4,4 @@ namespace Bitaac\Contracts;
 
 interface GuildRank
 {
-
 }

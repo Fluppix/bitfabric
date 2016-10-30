@@ -29,7 +29,7 @@ class CreateBitaacPlayers extends Migration
         Trigger::after('insert')->on('players')->create(function ($query) {
             $query->table('__bitaac_players')->insert([
                 'player_id'  => DB::raw('NEW.`id`'),
-                'created_at' => DB::raw('now()')
+                'created_at' => DB::raw('now()'),
             ]);
         });
     }

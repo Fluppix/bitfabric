@@ -2,7 +2,6 @@
 
 namespace Bitaac\Account\Http\Controllers\Auth;
 
-use Google2FA;
 use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
 use Bitaac\Core\Http\Requests\Auth\LoginRequest;
@@ -21,7 +20,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the login form to the user
+     * Show the login form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,18 +30,18 @@ class LoginController extends Controller
     }
 
     /**
-     * Process the login
+     * Process the login.
      *
      * @return \Illuminate\Http\Response
      */
     public function post(LoginRequest $request)
     {
-        $user = app('account')->where(function($query) use($request) {
+        $user = app('account')->where(function ($query) use ($request) {
             $query->where('name', $request->get('account'));
             $query->where('password', bcrypt($request->get('password')));
         });
 
-        if (!$user->exists()) {
+        if (! $user->exists()) {
             return back()->withError(trans('auth.login.wrong.credentials'));
         }
 
@@ -55,7 +54,7 @@ class LoginController extends Controller
             }
 
             $valid = \Google2FA::verifyKey($user->secret, $request->get('2fa'));
-            if (!$valid) {
+            if (! $valid) {
                 return back()->withError(trans('auth.login.2fa.not.valid'));
             }
         }

@@ -27,7 +27,7 @@ class CreateBitaacGuilds extends Migration
         Trigger::after('insert')->on('guilds')->create(function ($query) {
             $query->table('__bitaac_guilds')->insert([
                 'guild_id'   => DB::raw('NEW.`id`'),
-                'created_at' => DB::raw('now()')
+                'created_at' => DB::raw('now()'),
             ]);
         });
     }

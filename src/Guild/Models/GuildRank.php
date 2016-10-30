@@ -7,7 +7,7 @@ use Bitaac\Contracts\GuildRank as Contract;
 
 class GuildRank extends Model implements Contract
 {
-	/**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -17,7 +17,7 @@ class GuildRank extends Model implements Contract
     /**
      * Tell the model to ignore timestamps.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 
@@ -26,8 +26,8 @@ class GuildRank extends Model implements Contract
      *
      * @return
      */
-	public function getMembers()
-	{
-		return $this->hasMany('Bitaac\Contracts\GuildMember', 'rank_id')->where('guild_id', $this->guild_id);
-	}
+    public function getMembers()
+    {
+        return $this->hasMany('Bitaac\Contracts\GuildMember', 'rank_id')->where('guild_id', $this->guild_id);
+    }
 }

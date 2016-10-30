@@ -20,7 +20,7 @@ class PasswordController extends Controller
     }
 
     /**
-     * Show the change password form to the user
+     * Show the change password form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class PasswordController extends Controller
     }
 
     /**
-     * Process the password change
+     * Process the password change.
      *
      * @return \Illuminate\Http\Response
      */

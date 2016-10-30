@@ -2,10 +2,8 @@
 
 namespace Bitaac\Forum\Resources\Seeds;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Model;
 
 class ForumTablesSeeder extends Seeder
 {

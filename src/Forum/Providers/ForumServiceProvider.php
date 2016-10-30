@@ -2,13 +2,12 @@
 
 namespace Bitaac\Forum\Providers;
 
-use Illuminate\Routing\Router;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class ForumServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Holds all contracts and models we want to bind
+     * Holds all contracts and models we want to bind.
      *
      * @var array
      */
@@ -17,7 +16,7 @@ class ForumServiceProvider extends AggregateServiceProvider
     ];
 
     /**
-     * Holds all service providers we want to register
+     * Holds all service providers we want to register.
      *
      * @var array
      */
@@ -35,7 +34,7 @@ class ForumServiceProvider extends AggregateServiceProvider
         require_once __DIR__.'/../Http/routes.php';
 
         $this->publishes([
-            __DIR__.'/../Config' => config_path('bitaac')
+            __DIR__.'/../Config' => config_path('bitaac'),
         ], 'config');
     }
 

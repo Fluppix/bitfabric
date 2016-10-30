@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class OnlineController extends Controller
 {
     /**
-     * Show the online page to the user
+     * Show the online page to the user.
      *
      * @return \Illuminate\Http\Response
      */

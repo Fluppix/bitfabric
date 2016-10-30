@@ -2,7 +2,6 @@
 
 namespace Bitaac\Core\Providers;
 
-use Illuminate\Routing\Router;
 use Bitaac\Store\Providers\StoreServiceProvider;
 use Bitaac\Guild\Providers\GuildServiceProvider;
 use Bitaac\Forum\Providers\ForumServiceProvider;
@@ -14,7 +13,7 @@ use Bitaac\Community\Providers\CommunityServiceProvider;
 class BitfabricServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Holds all service providers we want to register
+     * Holds all service providers we want to register.
      *
      * @var array
      */
@@ -64,7 +63,7 @@ class BitfabricServiceProvider extends AggregateServiceProvider
     public function register()
     {
         $this->app->register(config('bitaac.app.theme', \Bitaac\Theme\RetroThemeServiceProvider::class));
-        
+
         parent::register();
     }
 
@@ -82,7 +81,7 @@ class BitfabricServiceProvider extends AggregateServiceProvider
         require_once __DIR__.'/../Http/routes.php';
 
         $this->publishes([
-            __DIR__.'/../Config' => config_path('bitaac')
+            __DIR__.'/../Config' => config_path('bitaac'),
         ], 'config');
     }
 }

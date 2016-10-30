@@ -20,7 +20,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Show the login form to the user
+     * Show the login form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,15 +30,15 @@ class RegisterController extends Controller
     }
 
     /**
-     * Process the login
+     * Process the login.
      *
      * @return \Illuminate\Http\Response
      */
     public function post(RegisterRequest $request)
     {
-        $account           = app('account');
-        $account->name     = $request->get('account');
-        $account->email    = $request->get('email');
+        $account = app('account');
+        $account->name = $request->get('account');
+        $account->email = $request->get('email');
         $account->password = bcrypt($request->get('password'));
         $account->save();
 

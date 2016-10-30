@@ -3,7 +3,6 @@
 namespace Bitaac\Core\Database\Eloquent;
 
 use Illuminate\Support\Str;
-use Doctrine\DBAL\Schema\SchemaException;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\HasMany;

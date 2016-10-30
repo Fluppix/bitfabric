@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class DisbandRequest extends FormRequest 
+class DisbandRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,7 +14,7 @@ class DisbandRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required'
+            'password' => 'required',
         ];
     }
 

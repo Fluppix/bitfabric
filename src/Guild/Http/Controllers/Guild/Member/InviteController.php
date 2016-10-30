@@ -7,26 +7,26 @@ use Bitaac\Guild\Http\Requests\Guild\Member\InviteRequest;
 
 class InviteController extends Controller
 {
-	/**
-	 * Show the invite form to the user. 
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function form($guild)
-	{
-		return view('bitaac::guilds.guild.member.invite')->with(compact('guild'));
-	}
+    /**
+     * Show the invite form to the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form($guild)
+    {
+        return view('bitaac::guilds.guild.member.invite')->with(compact('guild'));
+    }
 
-	/**
-	 * Process the invitation.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function post(InviteRequest $request, $guild)
-	{
+    /**
+     * Process the invitation.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function post(InviteRequest $request, $guild)
+    {
         $character = app('player')->where('name', $request->get('character'))->first();
 
-        // If character already has been invited to this guild. 
+        // If character already has been invited to this guild.
         if ($character->guildInvitees->contains('guild_id', $guild->id)) {
             return back()->withError(trans('guild.invite.already.invited'));
         }
@@ -38,9 +38,9 @@ class InviteController extends Controller
 
         $invite = app('guild.invite');
         $invite->player_id = $character->id;
-        $invite->guild_id  = $guild->id;
+        $invite->guild_id = $guild->id;
         $invite->save();
 
         return back()->withSuccess(trans('guild.invite.success'));
-	}
+    }
 }

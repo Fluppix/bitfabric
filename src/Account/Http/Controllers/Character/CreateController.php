@@ -20,7 +20,7 @@ class CreateController extends Controller
     }
 
     /**
-     * Show the create character form to the user
+     * Show the create character form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class CreateController extends Controller
     }
 
     /**
-     * Process the character creation
+     * Process the character creation.
      *
      * @return \Illuminate\Http\Response
      */

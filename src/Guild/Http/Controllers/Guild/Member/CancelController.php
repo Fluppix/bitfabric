@@ -2,14 +2,13 @@
 
 namespace Bitaac\Guild\Http\Controllers\Guild\Member;
 
-use Auth;
 use App\Http\Controllers\Controller;
 use Bitaac\Guild\Http\Requests\Guild\Member\CancelRequest;
 
 class CancelController extends Controller
 {
     /**
-     * Show the cancel form to the user. 
+     * Show the cancel form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,10 +24,10 @@ class CancelController extends Controller
      */
     public function post(CancelRequest $request, $guild)
     {
-        $invite = app('guild.invite')->where(function($query) use($request, $guild) {
+        $invite = app('guild.invite')->where(function ($query) use ($request,$guild) {
             $query->where('player_id', $request->get('character'));
             $query->where('guild_id', $guild->id);
-        }); 
+        });
 
         $invite->delete();
 

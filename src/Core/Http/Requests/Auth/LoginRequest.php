@@ -2,15 +2,15 @@
 
 namespace Bitaac\Core\Http\Requests\Auth;
 
-use Response;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest {
+class LoginRequest extends FormRequest
+{
     public function rules()
     {
         return [
             'account'  => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ];
     }
 

@@ -33,10 +33,10 @@ class ForumPost extends Model implements Contract
 
     public function replies()
     {
-        return $this->hasMany('Bitaac\Forum\Models\ForumPost', 'belongs_to')->join('players', function($join){
+        return $this->hasMany('Bitaac\Forum\Models\ForumPost', 'belongs_to')->join('players', function ($join) {
             $join->on('__bitaac_forum_posts.player_id', '=', 'players.id');
         })->select([
-            '__bitaac_forum_posts.id', 'players.name AS player_name', 'content', 'timestamp', 'player_id', 'created_at', 'board_id'
+            '__bitaac_forum_posts.id', 'players.name AS player_name', 'content', 'timestamp', 'player_id', 'created_at', 'board_id',
         ]);
     }
 
@@ -44,7 +44,7 @@ class ForumPost extends Model implements Contract
     {
         return url_e('/forum/:board/:thread', [
             'board'  => $this->board->title,
-            'thread' => $this->title
+            'thread' => $this->title,
         ]);
     }
 
@@ -53,7 +53,7 @@ class ForumPost extends Model implements Contract
         return url_e('/forum/:board/:thread#:reply', [
             'board'  => $this->board->title,
             'thread' => $thread->title,
-            'reply'  => $reply
+            'reply'  => $reply,
         ]);
     }
 

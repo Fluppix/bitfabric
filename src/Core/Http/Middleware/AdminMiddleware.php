@@ -12,7 +12,7 @@ class AdminMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  integer  $amount
+     * @param  int  $amount
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)

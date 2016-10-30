@@ -6,7 +6,7 @@ use Bitaac\Core\Database\Eloquent\Model;
 
 class GuildMember extends Model
 {
-	/**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -16,12 +16,12 @@ class GuildMember extends Model
     /**
      * Tell the model to ignore timestamps.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Set the primary key
+     * Set the primary key.
      *
      * @var string
      */
@@ -55,7 +55,7 @@ class GuildMember extends Model
     }
 
     /**
-     * Get the associated guild with the player. 
+     * Get the associated guild with the player.
      *
      * @return hasOne
      */
@@ -65,7 +65,7 @@ class GuildMember extends Model
     }
 
     /**
-     * Customize __call
+     * Customize __call.
      *
      * @param mixed  $method
      * @param mixed  $arguments

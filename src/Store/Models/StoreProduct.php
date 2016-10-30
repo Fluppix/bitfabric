@@ -11,6 +11,6 @@ class StoreProduct extends Model implements Contract
 
     public function imageIsLink()
     {
-    	return (boolean) filter_var($this->image, FILTER_VALIDATE_URL);
+        return (bool) filter_var($this->image, FILTER_VALIDATE_URL);
     }
 }

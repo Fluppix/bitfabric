@@ -17,12 +17,12 @@ class DeleteController extends Controller
     {
         return view('bitaac::forum.thread.delete', [
             'thread' => $thread,
-            'board'  => $board
+            'board'  => $board,
         ]);
     }
 
     /**
-     * Process the thread & replies deletion
+     * Process the thread & replies deletion.
      *
      * @param  string  $board
      * @param  string  $thread
@@ -32,6 +32,7 @@ class DeleteController extends Controller
     {
         $thread->delete();
         $thread->deleteReplies();
+
         return redirect($board->link())->withSuccess('Thread has been deleted.');
     }
 }

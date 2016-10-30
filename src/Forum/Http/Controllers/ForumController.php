@@ -2,9 +2,7 @@
 
 namespace Bitaac\Forum\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
 use Bitaac\Forum\Models\Board;
 
 class ForumController extends Controller
@@ -17,7 +15,7 @@ class ForumController extends Controller
     public function index()
     {
         return view('bitaac::forum.index', [
-            'boards' => (new Board)->all()
+            'boards' => (new Board)->all(),
         ]);
     }
 }

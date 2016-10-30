@@ -14,7 +14,7 @@ class CreateController extends Controller
      */
     public function form()
     {
-    	return view('bitaac::guilds.create');
+        return view('bitaac::guilds.create');
     }
 
     /**
@@ -25,21 +25,21 @@ class CreateController extends Controller
     public function post(CreateRequest $request)
     {
         $guild = app('guild');
-        $guild->name    = $request->get('name');
+        $guild->name = $request->get('name');
         $guild->ownerid = $request->get('leader');
         $guild->creationdata = time();
         $guild->save();
 
-        $rank = app('guild.rank')->where(function($query) use($guild) {
+        $rank = app('guild.rank')->where(function ($query) use ($guild) {
             $query->where('guild_id', $guild->id);
             $query->where('level', 3);
-        })->first(); 
+        })->first();
 
         $membership = app('guild.member');
         $membership->player_id = $request->get('leader');
-        $membership->guild_id  = $guild->id;
-        $membership->rank_id   = $rank->id;
-        $membership->nick      = '';
+        $membership->guild_id = $guild->id;
+        $membership->rank_id = $rank->id;
+        $membership->nick = '';
         $membership->save();
 
         return redirect(url_e('/guild/:name', ['name' => $request->get('name')]))

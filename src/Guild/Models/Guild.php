@@ -7,17 +7,17 @@ use Bitaac\Core\Database\Eloquent\Model;
 
 class Guild extends Model implements Contract
 {
-	/**
-     * Tell the model what table to use
+    /**
+     * Tell the model what table to use.
      *
      * @var string
      */
     protected $table = 'guilds';
 
     /**
-     * Turn off timestamps for model
+     * Turn off timestamps for model.
      *
-     * @var boolean
+     * @var bool
      */
     public $timestamps = false;
 
@@ -39,26 +39,26 @@ class Guild extends Model implements Contract
     public function logoLink()
     {
         return url_e('/guilds/:name/logo', [
-            'name' => $this->name
+            'name' => $this->name,
         ]);
     }
 
     /**
-     * Get a link to the guild. 
+     * Get a link to the guild.
      *
      * @return string
      */
     public function link()
     {
         return url_e('/guild/:name', [
-            'name' => $this->name
+            'name' => $this->name,
         ]);
     }
 
     /**
      * Get members.
      *
-     * @return 
+     * @return
      */
     public function getMembers()
     {
@@ -68,7 +68,7 @@ class Guild extends Model implements Contract
     /**
      * Get guild leaders.
      *
-     * @return 
+     * @return
      */
     public function getLeaders()
     {

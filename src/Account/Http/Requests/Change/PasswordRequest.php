@@ -2,15 +2,15 @@
 
 namespace Bitaac\Account\Http\Requests\Change;
 
-use Response;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordRequest extends FormRequest {
+class PasswordRequest extends FormRequest
+{
     public function rules()
     {
         return [
             'password' => 'required|confirmed|min:6',
-            'current'  => 'required'
+            'current'  => 'required',
         ];
     }
 

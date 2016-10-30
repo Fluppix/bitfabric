@@ -2,10 +2,9 @@
 
 namespace Bitaac\Guild\Http\Requests\Guild\Member;
 
-use Response;
 use Bitaac\Core\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest 
+class EditRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,7 +15,7 @@ class EditRequest extends FormRequest
     {
         return [
             'member' => 'required',
-            'action' => 'required'
+            'action' => 'required',
         ];
     }
 

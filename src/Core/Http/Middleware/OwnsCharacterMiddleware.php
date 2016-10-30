@@ -18,12 +18,12 @@ class OwnsCharacterMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         if (is_null($player = $request->route()->parameters()['player'])) {
-            return (auth()->check()) ? redirect('/account'): redirect('/');
+            return (auth()->check()) ? redirect('/account') : redirect('/');
         }
 
 
         if ($player->account_id != auth()->user()->id) {
-            return (auth()->check()) ? redirect('/account'): redirect('/');
+            return (auth()->check()) ? redirect('/account') : redirect('/');
         }
 
         return $next($request);

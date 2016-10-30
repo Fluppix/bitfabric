@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class SearchController extends Controller
 {
     /**
-     * Show the character search form to the user
+     * Show the character search form to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,7 +18,7 @@ class SearchController extends Controller
     }
 
     /**
-     * Search for a character
+     * Search for a character.
      *
      * @return \Illuminate\Http\Response
      */

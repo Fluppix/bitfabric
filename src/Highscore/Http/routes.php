@@ -8,7 +8,7 @@
 | ...
 |
 */
-$router    = app('router');
+$router = app('router');
 $namespace = 'Bitaac\Highscore\Http\Controllers';
 
 /*
@@ -19,7 +19,7 @@ $namespace = 'Bitaac\Highscore\Http\Controllers';
 | ...
 |
 */
-$router->group(['prefix' => '/highscore', 'namespace' => $namespace], function($router) {
-	$router->get('/{skill?}/{vocation?}',  'HighscoreController@index')->middleware(['web']);
-	$router->post('/{skill?}/{vocation?}', 'HighscoreController@post')->middleware(['web']);
+$router->group(['prefix' => '/highscore', 'namespace' => $namespace], function ($router) {
+    $router->get('/{skill?}/{vocation?}', 'HighscoreController@index')->middleware(['web']);
+    $router->post('/{skill?}/{vocation?}', 'HighscoreController@post')->middleware(['web']);
 });

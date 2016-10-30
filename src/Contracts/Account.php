@@ -7,5 +7,4 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPassword;
 
 interface Account extends Authenticatable, CanResetPassword
 {
-
 }

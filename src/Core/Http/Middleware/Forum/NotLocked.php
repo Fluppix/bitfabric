@@ -20,7 +20,7 @@ class NotLocked
         $thread = $request->route()->parameters()['thread'];
 
         $account = auth()->user();
-        
+
         if ($thread->locked and $account->bit->admin == 0) {
             return redirect($thread->link());
         }

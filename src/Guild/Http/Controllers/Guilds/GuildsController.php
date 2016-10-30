@@ -13,8 +13,8 @@ class GuildsController extends Controller
      */
     public function index()
     {
-    	$guilds = app('guild')->all();
+        $guilds = app('guild')->all();
 
-    	return view('bitaac::guilds.index')->with(compact('guilds'));
+        return view('bitaac::guilds.index')->with(compact('guilds'));
     }
 }

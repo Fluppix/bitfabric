@@ -4,13 +4,12 @@ namespace Bitaac\Highscore\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
 use Bitaac\Core\Contracts\Highscore;
 
 class HighscoreController extends Controller
 {
     /**
-     * Show the highscore page to the user
+     * Show the highscore page to the user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,7 +23,7 @@ class HighscoreController extends Controller
     }
 
     /**
-     * Show the highscore page to the user
+     * Show the highscore page to the user.
      *
      * @return \Illuminate\Http\Response
      */
