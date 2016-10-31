@@ -127,7 +127,7 @@ abstract class AggregateServiceProvider extends ServiceProvider
     public function registerMiddleware()
     {
         if (empty($this->middleware)) {
-            return; 
+            return;
         }
 
         $kernel = app('\Illuminate\Contracts\Http\Kernel');
@@ -148,7 +148,7 @@ abstract class AggregateServiceProvider extends ServiceProvider
         if (empty($this->routeMiddleware)) {
             return;
         }
-        
+
         array_walk($this->routeMiddleware, function ($class, $name) {
             $this->app['router']->middleware($name, $class);
         });
