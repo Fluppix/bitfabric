@@ -60,7 +60,7 @@ class DeleteController extends Controller
         $player->bitaac->save();
 
         return redirect('/account')->withSuccess(
-            'Your character ' . $player->name . ' will be deleted at ' . Carbon::createFromTimestamp($player->bitaac->deletion_time) . '.'
+            'Your character '.$player->name.' will be deleted at '.Carbon::createFromTimestamp($player->bitaac->deletion_time).'.'
         );
     }
 }
