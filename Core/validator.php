@@ -109,15 +109,7 @@ Validator::extend('charname', function ($attribute, $value, $parameters, $valida
  * @return boolean
  */
 Validator::extend('owns_character', function ($attribute, $value, $parameters, $validator) {
-    $auth = auth();
-
-    if (! $auth->check()) {
-        return false;
-    }
-
-    $players = $auth->user()->characters;
-
-    return ! empty($players->where('id', (int) $value)->all());
+    return auth()->user()->characters()->where('name', $value)->exists();
 });
 
 /*

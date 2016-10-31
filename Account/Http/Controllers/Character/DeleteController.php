@@ -2,6 +2,7 @@
 
 namespace Bitaac\Account\Http\Controllers\Character;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Bitaac\Account\Http\Requests\Character\DeleteRequest;
@@ -38,6 +39,7 @@ class DeleteController extends Controller
     public function post(DeleteRequest $request)
     {
         $user = $this->auth->user();
+
         if (! $this->auth->attempt(['name' => $user->name, 'password' => $request->get('password')])) {
             return back()->withError('Password do not match.');
         }
@@ -57,6 +59,8 @@ class DeleteController extends Controller
         $player->bitaac->deletion_time = time() + config('bitaac.account.delete-character-time');
         $player->bitaac->save();
 
-        return back();
+        return redirect('/account')->withSuccess(
+            'Your character ' . $player->name . ' will be deleted at ' . Carbon::createFromTimestamp($player->bitaac->deletion_time) . '.'
+        );
     }
 }
