@@ -2,8 +2,8 @@
 
 namespace Bitaac\Death\Models;
 
-use Bitaac\Core\Database\Eloquent\Model;
 use Bitaac\Contracts\Death as Contract;
+use Bitaac\Core\Database\Eloquent\Model;
 
 class Death extends Model implements Contract
 {

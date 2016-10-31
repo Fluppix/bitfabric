@@ -41,10 +41,6 @@ class ForumServiceProvider extends AggregateServiceProvider
     public function boot()
     {
         parent::boot();
-
-        $this->publishes([
-            __DIR__.'/Config' => config_path('bitaac'),
-        ], 'config');
     }
 
     /**

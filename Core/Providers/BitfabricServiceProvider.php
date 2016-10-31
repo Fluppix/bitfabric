@@ -2,6 +2,7 @@
 
 namespace Bitaac\Core\Providers;
 
+use Bitaac\Admin\AdminServiceProvider;
 use Bitaac\Guild\GuildServiceProvider;
 use Bitaac\Store\StoreServiceProvider;
 use Bitaac\Forum\ForumServiceProvider;
@@ -30,6 +31,7 @@ class BitfabricServiceProvider extends AggregateServiceProvider
         HighscoreServiceProvider::class,
         StoreServiceProvider::class,
         GuildServiceProvider::class,
+        AdminServiceProvider::class,
     ];
 
     /**
@@ -66,6 +68,8 @@ class BitfabricServiceProvider extends AggregateServiceProvider
         });
 
         $this->app->register(config('bitaac.app.theme', \Bitaac\Theme\RetroThemeServiceProvider::class));
+
+        $this->app->register(config('bitaac.app.theme-admin', \Bitaac\ThemeAdmin\ThemeAdminServiceProvider::class));
 
         parent::register();
     }

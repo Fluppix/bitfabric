@@ -37,4 +37,15 @@ return [
 
     'theme' => Bitaac\Theme\RetroThemeServiceProvider::class,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Theme service provider
+    |--------------------------------------------------------------------------
+    | Currently available:
+    |     Bitaac\ThemeAdmin\ThemeAdminServiceProvider::class
+    |
+    */
+
+    'theme-admin' => Bitaac\ThemeAdmin\ThemeAdminServiceProvider::class,
+
 ];
