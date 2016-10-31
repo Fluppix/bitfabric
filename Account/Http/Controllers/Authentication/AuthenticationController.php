@@ -5,6 +5,7 @@ namespace Bitaac\Account\Http\Controllers\Authentication;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
+use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 
 class AuthenticationController extends Controller
 {
@@ -36,9 +37,20 @@ class AuthenticationController extends Controller
      */
     public function post(Request $request)
     {
+        $this->validate($request, [
+            'secret' => ['required'],
+        ]);
+
         $user = auth()->user();
         $secret = $request->get('secret');
-        $valid = \Google2FA::verifyKey($user->bit->secret, $secret);
+
+        try {  
+            $valid = \Google2FA::verifyKey($user->bit->secret, $secret);
+        } catch (InvalidCharactersException $e) {
+            return back()->withErrors([
+                'secret' => 'Invalid secret key.',
+            ]);
+        }
 
         if (! $valid) {
             return back()->withError(trans('authentication.not.valid'));
