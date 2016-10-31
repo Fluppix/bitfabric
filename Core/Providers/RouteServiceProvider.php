@@ -26,16 +26,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'email.update'     => \Bitaac\Core\Http\Middleware\EmailUpdateMiddleware::class,
-        'character.exists' => \Bitaac\Core\Http\Middleware\CharacterExistsMiddleware::class,
-        'owns.character'   => \Bitaac\Http\Middleware\OwnsCharacterMiddleware::class,
-        'admin'            => \Bitaac\Core\Http\Middleware\AdminMiddleware::class,
-
-        'has.owner'        => \Bitaac\Core\Http\Middleware\Guild\HasOwner::class,
-        'can.invite'       => \Bitaac\Core\Http\Middleware\Guild\CanInvite::class,
-        'can.edit'         => \Bitaac\Core\Http\Middleware\Guild\CanEdit::class,
-        'has.invite'       => \Bitaac\Core\Http\Middleware\Guild\HasInvite::class,
-
         // TO:DO
         'has.leader'       => \Bitaac\Core\Http\Middleware\Guild\HasLeader::class,
         'has.vice.leader'  => \Bitaac\Core\Http\Middleware\Guild\HasViceLeader::class,

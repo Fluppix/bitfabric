@@ -25,6 +25,16 @@ class PlayerServiceProvider extends AggregateServiceProvider
     ];
 
     /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'character.exists' => \Bitaac\Player\Http\Middleware\CharacterExistsMiddleware::class,
+        'owns.character'   => \Bitaac\Player\Http\Middleware\OwnsCharacterMiddleware::class,
+    ];
+
+    /**
      * Bootstrap the application events.
      *
      * @return void

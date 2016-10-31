@@ -1,10 +1,11 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware;
+namespace Bitaac\Guild\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class CharacterExistsMiddleware
+class HasOwnerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +17,14 @@ class CharacterExistsMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (is_null($request->route()->parameters()['player'])) {
+        $guild = $request->route()->parameters()['guild'];
+        $account = auth()->user();
+
+        if (is_null($guild)) {
+            return redirect('/');
+        }
+
+        if (! $account->hasOwner($guild)) {
             return redirect('/');
         }
 

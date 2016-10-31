@@ -1,11 +1,11 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware\Guild;
+namespace Bitaac\Guild\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CanInvite
+class HasInviteMiddleware
 {
     /**
      * Handle an incoming request.
@@ -24,7 +24,7 @@ class CanInvite
             return redirect('/');
         }
 
-        if ($account->hasOwner($guild) or $account->hasLeader($guild) or $account->hasViceLeader($guild)) {
+        if ($account->hasGuildInvite($guild)) {
             return $next($request);
         }
 

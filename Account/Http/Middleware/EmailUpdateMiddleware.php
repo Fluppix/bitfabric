@@ -1,24 +1,26 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware;
+namespace Bitaac\Account\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class EmailUpdateMiddleware
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  int  $amount
+     * @param  string|null  $guard
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! auth()->check() or ! auth()->user()->isAdmin()) {
-            return redirect('/');
+        $user = auth()->user();
+
+        if ($user->hasPendingEmail() && time() > $user->bit->email_change_time) {
+            $user->updateEmailWithPending();
         }
 
         return $next($request);

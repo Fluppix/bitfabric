@@ -1,11 +1,11 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware\Guild;
+namespace Bitaac\Guild\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CanEdit
+class CanEditMiddleware
 {
     /**
      * Handle an incoming request.

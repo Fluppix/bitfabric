@@ -25,6 +25,18 @@ class GuildServiceProvider extends AggregateServiceProvider
     ];
 
     /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'can.edit'   => \Bitaac\Guild\Http\Middleware\CanEditMiddleware::class,
+        'can.invite' => \Bitaac\Guild\Http\Middleware\CanInviteMiddleware::class,
+        'has.owner'  => \Bitaac\Guild\Http\Middleware\HasOwnerMiddleware::class,
+        'has.invite' => \Bitaac\Guild\Http\Middleware\HasInviteMiddleware::class,
+    ];
+
+    /**
      * Bootstrap the application events.
      *
      * @return void

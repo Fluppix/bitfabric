@@ -20,6 +20,13 @@ abstract class AggregateServiceProvider extends ServiceProvider
      *
      * @var array
      */
+    protected $routeMiddleware = [];
+
+    /**
+     * The application's global middleware.
+     *
+     * @var array
+     */
     protected $middleware = [];
 
     /**
@@ -105,6 +112,7 @@ abstract class AggregateServiceProvider extends ServiceProvider
         $this->instances = [];
 
         $this->registerMiddleware();
+        $this->registerRouteMiddleware();
         $this->registerProviders();
         $this->registerBindings();
         $this->registerCommands();
@@ -112,19 +120,38 @@ abstract class AggregateServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register middleware.
+     * Register application's global HTTP middleware.
      *
      * @return void
      */
-    protected function registerMiddleware()
+    public function registerMiddleware()
     {
-        if (! isset($this->middleware)) {
-            return;
+        if (empty($this->middleware)) {
+            return; 
         }
 
-        foreach ($this->middleware as $key => $middleware) {
-            $this->app['router']->middleware($key, $middleware);
+        $kernel = app('\Illuminate\Contracts\Http\Kernel');
+
+        array_walk($this->middleware, function ($class) use ($kernel) {
+            $kernel->prependMiddleware($class);
+            $kernel->pushMiddleware($class);
+        });
+    }
+
+    /**
+     * Register application's route middleware.
+     *
+     * @return void
+     */
+    protected function registerRouteMiddleware()
+    {
+        if (empty($this->routeMiddleware)) {
+            return;
         }
+        
+        array_walk($this->routeMiddleware, function ($class, $name) {
+            $this->app['router']->middleware($name, $class);
+        });
     }
 
     /**

@@ -16,16 +16,11 @@ class AdminServiceProvider extends AggregateServiceProvider
     ];
 
     /**
-     * Bootstrap the application events.
+     * The application's route middleware.
      *
-     * @return void
+     * @var array
      */
-    public function boot()
-    {
-        parent::boot();
-
-        // $this->publishes([
-        //     __DIR__.'/Config' => config_path('bitaac'),
-        // ], 'config');
-    }
+    protected $routeMiddleware = [
+        'admin' => \Bitaac\Admin\Http\Middleware\AdminMiddleware::class,
+    ];
 }

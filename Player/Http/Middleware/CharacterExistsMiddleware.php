@@ -1,11 +1,10 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware;
+namespace Bitaac\Player\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class EmailUpdateMiddleware
+class CharacterExistsMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +16,8 @@ class EmailUpdateMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $user = auth()->user();
-
-        if ($user->hasPendingEmail() && time() > $user->bit->email_change_time) {
-            $user->updateEmailWithPending();
+        if (is_null($request->route()->parameters()['player'])) {
+            return redirect('/');
         }
 
         return $next($request);

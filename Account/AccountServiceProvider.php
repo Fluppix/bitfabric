@@ -25,6 +25,15 @@ class AccountServiceProvider extends AggregateServiceProvider
     ];
 
     /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'email.update' => \Bitaac\Account\Http\Middleware\EmailUpdateMiddleware::class,
+    ];
+
+    /**
      * Bootstrap the application events.
      *
      * @return void
