@@ -14,14 +14,4 @@ class CommunityServiceProvider extends AggregateServiceProvider
     protected $routes = [
         'Bitaac\Community\Http\Controllers' => __DIR__.'/Http/routes.php',
     ];
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        parent::boot();
-    }
 }

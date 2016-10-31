@@ -2,6 +2,7 @@
 
 namespace Bitaac\Guild;
 
+use Bitaac\Guild\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class GuildServiceProvider extends AggregateServiceProvider
@@ -30,10 +31,10 @@ class GuildServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'can.edit'   => \Bitaac\Guild\Http\Middleware\CanEditMiddleware::class,
-        'can.invite' => \Bitaac\Guild\Http\Middleware\CanInviteMiddleware::class,
-        'has.owner'  => \Bitaac\Guild\Http\Middleware\HasOwnerMiddleware::class,
-        'has.invite' => \Bitaac\Guild\Http\Middleware\HasInviteMiddleware::class,
+        'can.edit'   => Middleware\CanEditMiddleware::class,
+        'can.invite' => Middleware\CanInviteMiddleware::class,
+        'has.owner'  => Middleware\HasOwnerMiddleware::class,
+        'has.invite' => Middleware\HasInviteMiddleware::class,
     ];
 
     /**

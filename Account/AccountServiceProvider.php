@@ -2,6 +2,7 @@
 
 namespace Bitaac\Account;
 
+use Bitaac\Account\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class AccountServiceProvider extends AggregateServiceProvider
@@ -30,7 +31,7 @@ class AccountServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'email.update' => \Bitaac\Account\Http\Middleware\EmailUpdateMiddleware::class,
+        'email.update' => Middleware\EmailUpdateMiddleware::class,
     ];
 
     /**

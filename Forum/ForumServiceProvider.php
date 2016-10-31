@@ -34,16 +34,6 @@ class ForumServiceProvider extends AggregateServiceProvider
     ];
 
     /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        parent::boot();
-    }
-
-    /**
      * Register any application services.
      *
      * @return void

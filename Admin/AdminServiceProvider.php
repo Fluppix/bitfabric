@@ -2,6 +2,7 @@
 
 namespace Bitaac\Admin;
 
+use Bitaac\Admin\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class AdminServiceProvider extends AggregateServiceProvider
@@ -21,6 +22,6 @@ class AdminServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin' => \Bitaac\Admin\Http\Middleware\AdminMiddleware::class,
+        'admin' => Middleware\AdminMiddleware::class,
     ];
 }

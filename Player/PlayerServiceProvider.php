@@ -2,6 +2,7 @@
 
 namespace Bitaac\Player;
 
+use Bitaac\Player\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class PlayerServiceProvider extends AggregateServiceProvider
@@ -30,8 +31,8 @@ class PlayerServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'character.exists' => \Bitaac\Player\Http\Middleware\CharacterExistsMiddleware::class,
-        'owns.character'   => \Bitaac\Player\Http\Middleware\OwnsCharacterMiddleware::class,
+        'character.exists' => Middleware\CharacterExistsMiddleware::class,
+        'owns.character'   => Middleware\OwnsCharacterMiddleware::class,
     ];
 
     /**
