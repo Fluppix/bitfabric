@@ -83,12 +83,12 @@ class PaymentController extends Controller
 
         $transaction = $gateway->completePurchase(array_merge($request->session()->get('params'), [
             'transactionReference' => $request->session()->get('transactionReference'),
-            'payerId' => $request->get('PayerID')
+            'payerId' => $request->get('PayerID'),
         ]));
 
         $response = $transaction->send();
 
-        // Make sure the payment was successful. 
+        // Make sure the payment was successful.
         if (! $response->isSuccessful()) {
             return back()->withErrors('Something went wrong.');
         }
@@ -100,7 +100,7 @@ class PaymentController extends Controller
             $query->where('method', $provider);
         });
 
-        // Make sure the payment already has been processed 
+        // Make sure the payment already has been processed
         if ($payment->exists()) {
             return back()->withErrors('Payment has already been processed.');
         }
