@@ -44,7 +44,7 @@ class AuthenticationController extends Controller
         $user = auth()->user();
         $secret = $request->get('secret');
 
-        try {  
+        try {
             $valid = \Google2FA::verifyKey($user->bit->secret, $secret);
         } catch (InvalidCharactersException $e) {
             return back()->withErrors([
