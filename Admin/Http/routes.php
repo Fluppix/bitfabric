@@ -14,4 +14,5 @@ $router->group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], functi
     $router->get('/store/products', 'Store\ProductsController@index');
     $router->get('/store/products/create', 'Store\ProductsController@form');
     $router->post('/store/products/create', 'Store\ProductsController@post');
+    $router->get('/payments', 'Payments\PaymentsController@index');
 });

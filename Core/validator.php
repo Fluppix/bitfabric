@@ -109,7 +109,9 @@ Validator::extend('charname', function ($attribute, $value, $parameters, $valida
  * @return boolean
  */
 Validator::extend('owns_character', function ($attribute, $value, $parameters, $validator) {
-    return auth()->user()->characters()->where('name', $value)->exists();
+    $characters = auth()->user()->characters();
+
+    return $characters->where('id', $value)->exists();
 });
 
 /*
