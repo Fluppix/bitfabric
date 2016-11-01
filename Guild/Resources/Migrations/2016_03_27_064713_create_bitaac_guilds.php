@@ -18,6 +18,7 @@ class CreateBitaacGuilds extends Migration
         Schema::create('__bitaac_guilds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('guild_id');
+            $table->string('description');
             $table->string('logo', 255)->nullable()->default(null);
             $table->timestamps();
         });
