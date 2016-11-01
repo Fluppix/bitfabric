@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | paytal/paypal settings
+    | omnipay/paypal settings
     |--------------------------------------------------------------------------
     |
     |
@@ -12,14 +12,13 @@ return [
 
     'paypal' => [
         'enabled'  => true,
+        'sandbox' => true,
         'currency' => 'USD',
-
-        'auth' => [
-            'client' => env('PAYPAL_CLIENT', 'XXX'),
-            'secret' => env('PAYPAL_SECRET', 'XXX'),
-            'returnUrl' => 'paypal.return',
-            'cancelUrl' => 'paypal.cancel',
-        ],
+        'presentable' => 'Paypal',
+        'omnipay' => 'PayPal_Rest',
+        'description' => 'Bitaac Donation Points',
+        'client' => env('PAYPAL_CLIENT', 'XXX'),
+        'secret' => env('PAYPAL_SECRET', 'XXX'),
 
         'offers' => [
             '10.00' => 250,

@@ -12,14 +12,8 @@
 $router->group(['prefix' => '/store'], function ($router) {
     $router->get('/', 'StoreController@index');
     $router->get('/offers', 'Offer\OfferController@index');
-    $router->get('/offers/paypal', 'Offer\Paypal\PaypalController@index');
-    $router->post('/offers/paypal', 'Offer\Paypal\PaypalController@post');
-    $router->get('/offers/paypal/return', [
-        'as'   => 'paypal.return',
-        'uses' => 'Offer\Paypal\PaypalController@return',
-    ]);
-    $router->get('/offers/paypal/cancel', [
-        'as'   => 'paypal.cancel',
-        'uses' => 'Offer\Paypal\PaypalController@cancel',
-    ]);
+    $router->get('/offers/{gateway}', 'Offer\PaymentController@index');
+    $router->post('/offers/{gateway}', 'Offer\PaymentController@post');
+    $router->get('/offers/{gateway}/return', 'Offer\PaymentController@return')->name('gateway.return');
+    $router->get('/offers/{gateway}/cancel', 'Offer\PaymentController@cancel')->name('gateway.cancel');
 });
