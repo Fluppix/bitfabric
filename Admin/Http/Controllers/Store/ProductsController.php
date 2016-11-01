@@ -38,11 +38,11 @@ class ProductsController extends Controller
      */
     public function post(CreateRequest $request, StoreProduct $product)
     {
-        $product              = new $product;
-        $product->title       = $request->get('title');
-        $product->item_id     = $request->get('item_id');
-        $product->item_count  = $request->get('amount');
-        $product->points      = $request->get('points');
+        $product = new $product;
+        $product->title = $request->get('title');
+        $product->item_id = $request->get('item_id');
+        $product->item_count = $request->get('amount');
+        $product->points = $request->get('points');
         $product->description = $request->get('description');
         $product->save();
 
