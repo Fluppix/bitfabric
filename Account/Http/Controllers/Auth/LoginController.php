@@ -48,7 +48,7 @@ class LoginController extends Controller
         $user = $user->first();
         $bitaac = $user->bit;
 
-        if ($user->secret) {
+        if ($user->secret && config('account.two-factor')) {
             if ($request->get('2fa') == '') {
                 return back()->withError(trans('auth.login.2fa.required'));
             }

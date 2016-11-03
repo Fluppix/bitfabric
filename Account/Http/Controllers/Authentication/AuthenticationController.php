@@ -18,6 +18,14 @@ class AuthenticationController extends Controller
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
+
+        $this->middleware(function ($request, $next) {
+            if (! config('account.two-factor')) {
+                return redirect('/account');
+            }
+
+            return $next($request);
+        });
     }
 
     /**
