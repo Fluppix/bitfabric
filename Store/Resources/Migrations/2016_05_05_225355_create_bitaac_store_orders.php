@@ -17,7 +17,8 @@ class CreateBitaacStoreOrders extends Migration
             $table->increments('id');
             $table->integer('account_id');
             $table->integer('player_id');
-            $table->integer('product_id');
+            $table->integer('item_id');
+            $table->integer('item_count');
             $table->integer('claimed')->default(0);
             $table->timestamps();
         });

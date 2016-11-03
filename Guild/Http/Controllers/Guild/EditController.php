@@ -39,7 +39,7 @@ class EditController extends Controller
 
         $guild->bitaac->save();
 
-        return back()->withSuccess('Your guild has been edited.');
+        return back()->withSuccess('Your changes were saved.');
     }
 
     /**
