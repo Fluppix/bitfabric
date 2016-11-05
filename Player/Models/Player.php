@@ -115,6 +115,9 @@ class Player extends Model implements Contract
         $character = new $this;
         $character->name = ucwords($name);
         $character->account_id = auth()->id();
+        $character->level = config('bitaac.character.create-data.level');
+        $character->experience = config('bitaac.character.create-data.experience');
+        $character->maglevel = config('bitaac.character.create-data.maglevel');
         $character->sex = (int) $attributes['gender'];
         $character->vocation = (int) $attributes['vocation'];
         $character->town_id = (int) $attributes['town'];
@@ -128,14 +131,6 @@ class Player extends Model implements Contract
         $character->lookfeet = 76;
 
         $formulae = new Formulae;
-
-        if ($level = value_args(config('bitaac.character.create-data.level'), $character)) {
-            $character->level = $level;
-        }
-
-        if ($maglevel = value_args(config('bitaac.character.create-data.maglevel'), $character)) {
-            $character->maglevel = $maglevel;
-        }
 
         if ($health = $formulae->health($character)) {
             $character->health = $health;

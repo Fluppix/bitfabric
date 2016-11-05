@@ -121,4 +121,14 @@ class PaymentController extends Controller
 
         return redirect('/store')->withSuccess("Thanks for your purchase, {$payment->points} points has been added to your account.");
     }
+
+    /**
+     * Cancel the payment.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel()
+    {
+        return redirect('/store');
+    }
 }
