@@ -2,6 +2,7 @@
 
 namespace Bitaac\Store;
 
+use Bitaac\Store\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
 
 class StoreServiceProvider extends AggregateServiceProvider
@@ -25,12 +26,21 @@ class StoreServiceProvider extends AggregateServiceProvider
     ];
 
     /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'can.claim' => Middleware\CanClaimMiddleware::class,
+    ];
+
+    /**
      * Holds all contracts and models we want to bind.
      *
      * @var array
      */
     protected $bindings = [
-        'store.products' => [\Bitaac\Contracts\StoreProduct::class => \Bitaac\Store\Models\StoreProduct::class],
+        'store.product' => [\Bitaac\Contracts\StoreProduct::class => \Bitaac\Store\Models\StoreProduct::class],
     ];
 
     /**

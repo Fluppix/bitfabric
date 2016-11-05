@@ -5,6 +5,7 @@ namespace Bitaac\Core\Providers;
 use Illuminate\Routing\Router;
 use Bitaac\Forum\Models\Board;
 use Bitaac\Forum\Models\ForumPost;
+use Bitaac\Store\Models\StoreProduct;
 use App\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider

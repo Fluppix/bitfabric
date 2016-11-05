@@ -30,7 +30,8 @@ class ForumServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $bindings = [
-        'post' => [\Bitaac\Forum\Contracts\Post::class => \Bitaac\Forum\Models\Post::class],
+        'forum.post'  => [\Bitaac\Contracts\ForumPost::class  => \Bitaac\Forum\Models\ForumPost::class],
+        'forum.board' => [\Bitaac\Contracts\ForumBoard::class => \Bitaac\Forum\Models\Board::class],
     ];
 
     /**

@@ -13,7 +13,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $products = app('store.products')->all();
+        $products = app('store.product')->all();
 
         return view('bitaac::store.index')->with(compact('products'));
     }

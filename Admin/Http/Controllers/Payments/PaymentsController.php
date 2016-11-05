@@ -9,13 +9,14 @@ use Bitaac\Admin\Http\Requests\Products\CreateRequest;
 class PaymentsController extends Controller
 {
     /**
-     * Show all payments to user.
+     * Show payment logs to user.
      *
+     * @param  \Bitaac\Store\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
     public function index(Payment $payment)
     {
-        return view('admin::store.payments.show')->with([
+        return view('admin::payments.index')->with([
             'payments' => $payment->orderBy('created_at', 'desc')->get(),
         ]);
     }

@@ -223,3 +223,29 @@ if (! function_exists('lines')) {
         }, $string);
     }
 }
+
+if (! function_exists('config_lua')) {
+    /**
+     * Get a config.lua value.
+     *
+     * @param  string                  $string
+     * @param  string|integer|boolean  $default
+     * @return string|integer|boolean
+     */
+    function config_lua($key, $default = '')
+    {
+        $config = file(config('bitaac.server.config'));
+
+        $new = '';
+
+        foreach ($config as $c) {
+            if (substr($c, 0, 2) == '--' or empty($c) or $c == '') {
+                continue;
+            }
+
+            $new .= $c;
+        }
+
+        return isset(parse_ini_string($new)[$key]) ? parse_ini_string($new)[$key] : $default;
+    }
+}

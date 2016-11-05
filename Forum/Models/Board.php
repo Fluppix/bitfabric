@@ -2,9 +2,10 @@
 
 namespace Bitaac\Forum\Models;
 
+use Bitaac\Contracts\ForumBoard;
 use Bitaac\Core\Database\Eloquent\Model;
 
-class Board extends Model
+class Board extends Model implements ForumBoard
 {
     /**
      * Table used by the model.

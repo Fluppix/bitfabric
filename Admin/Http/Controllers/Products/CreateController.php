@@ -1,25 +1,13 @@
 <?php
 
-namespace Bitaac\Admin\Http\Controllers\Store;
+namespace Bitaac\Admin\Http\Controllers\Products;
 
 use Bitaac\Contracts\StoreProduct;
 use App\Http\Controllers\Controller;
 use Bitaac\Admin\Http\Requests\Products\CreateRequest;
 
-class ProductsController extends Controller
+class CreateController extends Controller
 {
-    /**
-     * Show all store products to user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(StoreProduct $products)
-    {
-        return view('admin::store.products.show')->with([
-            'products' => $products->get(),
-        ]);
-    }
-
     /**
      * Show add product form to user.
      *
@@ -27,7 +15,7 @@ class ProductsController extends Controller
      */
     public function form()
     {
-        return view('admin::store.products.create');
+        return view('admin::products.create');
     }
 
     /**
@@ -46,6 +34,6 @@ class ProductsController extends Controller
         $product->description = $request->get('description');
         $product->save();
 
-        return redirect('/admin/store/products')->withSuccess('Your product has been added.');
+        return redirect('/admin/products')->withSuccess('Your product has been added.');
     }
 }

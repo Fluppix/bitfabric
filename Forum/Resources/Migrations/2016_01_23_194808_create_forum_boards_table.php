@@ -18,6 +18,7 @@ class CreateForumBoardsTable extends Migration
             $table->string('title', 50);
             $table->string('description', 150);
             $table->integer('news')->default(0);
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }

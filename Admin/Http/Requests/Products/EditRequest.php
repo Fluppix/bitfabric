@@ -4,7 +4,7 @@ namespace Bitaac\Admin\Http\Requests\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class EditRequest extends FormRequest
 {
     public function rules()
     {

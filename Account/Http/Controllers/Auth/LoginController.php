@@ -62,6 +62,6 @@ class LoginController extends Controller
         $bitaac->updateLastLogin();
         $this->auth->loginUsingId($user->id);
 
-        return redirect('/account');
+        return redirect('/account')->withSuccess('You have been logged in.');
     }
 }

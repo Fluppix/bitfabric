@@ -4,6 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Config.lua path
+    |--------------------------------------------------------------------------
+    |
+    | ...
+    |
+    */    
+
+    'config' => env('CONFIG_LUA', ''),
+
+    /*
+    |--------------------------------------------------------------------------
     | Genders
     |--------------------------------------------------------------------------
     |
@@ -92,21 +103,21 @@ return [
             'image'       => false,
         ],
         2 => [
-            'presentable' => 'Tutor',
-            'image'       => 'tutor.png',
-        ],
-        3 => [
-            'presentable' => 'Senior Tutor',
-            'image'       => 'senior-tutor.png',
-        ],
-        4 => [
             'presentable' => 'Gamemaster',
             'image'       => 'gm.png',
         ],
-        5 => [
+        3 => [
             'presentable' => 'God',
             'image'       => 'gm.png',
         ],
+        // 4 => [
+        //     'presentable' => 'Tutor',
+        //     'image'       => 'tutor.png',
+        // ],
+        // 5 => [
+        //     'presentable' => 'Senior Tutor',
+        //     'image'       => 'senior-tutor.png',
+        // ],
     ],
 
 ];

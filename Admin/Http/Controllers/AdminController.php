@@ -17,11 +17,15 @@ class AdminController extends Controller
     {
         $player = $player->get();
 
+        $highestLevel = ($player->count() > 0) ? $player->sortByDesc('level')->first()->level : 0 ;
+
+        $averageLevel = ($player->count() > 0) ? number_format($player->pluck('level')->avg()) : 0 ; 
+
         return view('admin::index')->with([
             'totalAccounts' => $account->count(),
             'totalPlayers'  => $player->count(),
-            'highestLevel'  => $player->sortByDesc('level')->first()->level,
-            'averageLevel'  => number_format($player->pluck('level')->avg()),
+            'highestLevel'  => $highestLevel,
+            'averageLevel'  => $averageLevel,
         ]);
     }
 }

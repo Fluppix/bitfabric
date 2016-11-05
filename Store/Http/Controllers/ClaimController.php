@@ -10,25 +10,6 @@ use App\Http\Controllers\Controller;
 class ClaimController extends Controller
 {
     /**
-     * Create a new claim controller instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
-     */
-    public function __construct(Request $request, StoreProduct $product)
-    {
-        $product = $product->find($request->product);
-
-        $this->middleware(function ($request, $next) use ($product) {
-            if ($request->user()->bit->points < $product->points) {
-                return redirect('/store');
-            }
-
-            return $next($request);
-        });
-    }
-
-    /**
      * Show the product claim form to user.
      *
      * @param  \Bitaac\Store\Models\StoreProduct  $product

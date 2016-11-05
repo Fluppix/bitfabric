@@ -116,6 +116,7 @@ class PaymentController extends Controller
 
         $user = auth()->user()->bit;
         $user->points = $user->points + $payment->points;
+        $user->total_points = $user->total_points + $payment->points;
         $user->save();
 
         return redirect('/store')->withSuccess("Thanks for your purchase, {$payment->points} points has been added to your account.");
