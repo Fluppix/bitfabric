@@ -2,6 +2,7 @@
 
 namespace Bitaac\Player\Models;
 
+use Bitaac\Player\Models\Formulae;
 use Bitaac\Core\Database\Eloquent\Model;
 use Bitaac\Contracts\Player as Contract;
 
@@ -126,6 +127,8 @@ class Player extends Model implements Contract
         $character->looklegs = 58;
         $character->lookfeet = 76;
 
+        $formulae = new Formulae;
+
         if ($level = value_args(config('bitaac.character.create-data.level'), $character)) {
             $character->level = $level;
         }
@@ -134,17 +137,17 @@ class Player extends Model implements Contract
             $character->maglevel = $maglevel;
         }
 
-        if ($health = value_args(config('bitaac.character.create-data.health'), $character)) {
+        if ($health = $formulae->health($character)) {
             $character->health = $health;
             $character->healthmax = $health;
         }
 
-        if ($mana = value_args(config('bitaac.character.create-data.mana'), $character)) {
+        if ($mana = $formulae->mana($character)) {
             $character->mana = $mana;
             $character->manamax = $mana;
         }
 
-        if ($capacity = value_args(config('bitaac.character.create-data.capacity'), $character)) {
+        if ($capacity = $formulae->capacity($character)) {
             $character->cap = $capacity;
         }
 
