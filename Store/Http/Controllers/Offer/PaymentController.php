@@ -129,6 +129,6 @@ class PaymentController extends Controller
      */
     public function cancel()
     {
-        return redirect('/store');
+        return redirect('/store/offers')->withError('The payment transaction has been cancelled.');
     }
 }
