@@ -2,8 +2,10 @@
 
 namespace Bitaac\Store;
 
+use Illuminate\Http\Response;
 use Bitaac\Store\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
+use Bitaac\Store\Exceptions\NotFoundProductException;
 
 class StoreServiceProvider extends AggregateServiceProvider
 {
@@ -55,5 +57,9 @@ class StoreServiceProvider extends AggregateServiceProvider
         $this->publishes([
             __DIR__.'/Resources/Config' => config_path('bitaac'),
         ], 'config');
+
+        $this->exceptions->handle(NotFoundProductException::class, function ($e) {
+            return new Response(view('bitaac::errors.404'), 404);
+        });
     }
 }

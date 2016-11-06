@@ -2,8 +2,10 @@
 
 namespace Bitaac\Guild;
 
+use Illuminate\Http\Response;
 use Bitaac\Guild\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
+use Bitaac\Guild\Exceptions\NotFoundGuildException;
 
 class GuildServiceProvider extends AggregateServiceProvider
 {
@@ -61,6 +63,10 @@ class GuildServiceProvider extends AggregateServiceProvider
         $this->app['seed.handler']->register(
             \Bitaac\Guild\Resources\Seeds\DatabaseSeeder::class
         );
+
+        $this->exceptions->handle(NotFoundGuildException::class, function ($e) {
+            return new Response(view('bitaac::errors.404'), 404);
+        });
 
         parent::register();
     }

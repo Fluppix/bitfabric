@@ -158,7 +158,7 @@ Validator::extend('max_words', function ($attribute, $value, $parameters, $valid
  * @return boolean
  */
 Validator::extend('alpha_space', function ($attribute, $value, $parameters, $validator) {
-    return preg_match('/^([a-zA-Z ]+)$/', $value);
+    return preg_match('/^[\pL\s]+$/u', $value);
 });
 
 /*

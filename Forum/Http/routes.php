@@ -6,7 +6,6 @@
 |--------------------------------------------------------------------------
 |
 |
-|
 */
 
 $router->group(['prefix' => '/forum'], function ($router) {
@@ -24,3 +23,34 @@ $router->group(['prefix' => '/forum'], function ($router) {
     $router->get('/{board}/{thread}/reply', 'Thread\ReplyController@index')->middleware(['auth', 'not.locked']);
     $router->post('/{board}/{thread}/reply', 'Thread\ReplyController@post')->middleware(['auth', 'not.locked']);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Explicit bindings
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+$router->bind('board', function ($board) {
+    $board = app('forum.board')->where('title', str_replace('-', ' ', $board));
+
+    if (! $board->exists()) {
+        throw new Bitaac\Forum\Exceptions\NotFoundBoardException;
+    }
+
+    return $board->first();
+});
+
+$router->bind('thread', function ($board) {
+    $board = app('forum.post')->where('title', str_replace('-', ' ', $board));
+
+    if (! $board->exists()) {
+        throw new Bitaac\Forum\Exceptions\NotFoundThreadException;
+    }
+
+    return $board->first();
+});
+
+
+

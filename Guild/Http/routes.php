@@ -45,3 +45,21 @@ $router->group(['prefix' => '/guilds'], function ($router) {
     $router->get('/create', 'Guilds\CreateController@form')->middleware(['auth']);
     $router->post('/create', 'Guilds\CreateController@post')->middleware(['auth']);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Explicit bindings
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+$router->bind('guild', function ($guild) {
+    $guild = app('guild')->where('name', str_replace('-', ' ',  $guild));
+
+    if (! $guild->exists()) {
+        throw new Bitaac\Guild\Exceptions\NotFoundGuildException;
+    }
+
+    return $guild->first();
+});

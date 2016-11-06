@@ -5,7 +5,6 @@
 | /store routes
 |--------------------------------------------------------------------------
 |
-| ...
 |
 */
 
@@ -22,15 +21,23 @@ $router->group(['prefix' => '/store'], function ($router) {
 
 /*
 |--------------------------------------------------------------------------
-| Explicit Bindings
+| Explicit bindings
 |--------------------------------------------------------------------------
 |
-| ...
 |
 */
 
 $router->bind('product', function ($product) {
-    return app('store.product')->where('title', str_replace('-', ' ', $product))->first();
+    $product = app('store.product')->where('title', str_replace('-', ' ', $product));
+
+    if (! $product->exists()) {
+        throw new Bitaac\Store\Exceptions\NotFoundProductException;
+    }
+
+    return $product->first();
 });
+
+
+
 
 

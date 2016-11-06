@@ -1,11 +1,11 @@
 <?php
 
-namespace Bitaac\Core\Http\Middleware\Forum;
+namespace Bitaac\Forum\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class NotLocked
+class NotLockedMiddleware
 {
     /**
      * Handle an incoming request.

@@ -15,3 +15,4 @@ class CommunityServiceProvider extends AggregateServiceProvider
         'Bitaac\Community\Http\Controllers' => __DIR__.'/Http/routes.php',
     ];
 }
+

@@ -2,8 +2,10 @@
 
 namespace Bitaac\Player;
 
+use Illuminate\Http\Response;
 use Bitaac\Player\Http\Middleware;
 use Bitaac\Core\Providers\AggregateServiceProvider;
+use Bitaac\Player\Exceptions\NotFoundPlayerException;
 
 class PlayerServiceProvider extends AggregateServiceProvider
 {
@@ -59,6 +61,10 @@ class PlayerServiceProvider extends AggregateServiceProvider
         $this->app['seed.handler']->register(
             \Bitaac\Player\Resources\Seeds\DatabaseSeeder::class
         );
+
+        $this->exceptions->handle(NotFoundPlayerException::class, function ($e) {
+            return new Response(view('bitaac::errors.404'), 404);
+        });
 
         parent::register();
     }

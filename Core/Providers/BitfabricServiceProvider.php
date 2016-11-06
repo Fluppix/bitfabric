@@ -2,6 +2,7 @@
 
 namespace Bitaac\Core\Providers;
 
+use Illuminate\Http\Response;
 use Bitaac\Admin\AdminServiceProvider;
 use Bitaac\Guild\GuildServiceProvider;
 use Bitaac\Store\StoreServiceProvider;
@@ -10,6 +11,8 @@ use Bitaac\Player\PlayerServiceProvider;
 use Bitaac\Account\AccountServiceProvider;
 use Bitaac\Highscore\HighscoreServiceProvider;
 use Bitaac\Community\CommunityServiceProvider;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BitfabricServiceProvider extends AggregateServiceProvider
 {
@@ -22,7 +25,6 @@ class BitfabricServiceProvider extends AggregateServiceProvider
         SeedServiceProvider::class,
         AppServiceProvider::class,
         AuthServiceProvider::class,
-        RouteServiceProvider::class,
         SHAHashServiceProvider::class,
         PlayerServiceProvider::class,
         AccountServiceProvider::class,
@@ -71,6 +73,14 @@ class BitfabricServiceProvider extends AggregateServiceProvider
 
         $this->app->register(config('bitaac.app.theme-admin', \Bitaac\ThemeAdmin\ThemeAdminServiceProvider::class));
 
+        $this->exceptions->handle(ModelNotFoundException::class, function ($e) {
+            return new Response(view('bitaac::errors.404'), 404);
+        });
+
+        $this->exceptions->handle(NotFoundHttpException::class, function ($e) {
+            return new Response(view('bitaac::errors.404'), 404);
+        });
+
         parent::register();
     }
 
@@ -81,6 +91,10 @@ class BitfabricServiceProvider extends AggregateServiceProvider
      */
     public function boot()
     {
+        $kernel = app('\Illuminate\Contracts\Http\Kernel');
+        $kernel->prependMiddleware(\Bitaac\Core\Http\Middleware\DeleteCharacterMiddleware::class);
+        $kernel->pushMiddleware(\Bitaac\Core\Http\Middleware\DeleteCharacterMiddleware::class);
+
         if (config('bitaac.app.https')) {
             $this->app['url']->forceSchema('https');
         }
