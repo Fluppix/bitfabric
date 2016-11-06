@@ -42,7 +42,7 @@ class LoginController extends Controller
         });
 
         if (! $user->exists()) {
-            return back()->withError(trans('auth.login.wrong.credentials'));
+            return back()->withError('These credentials do not match our records.');
         }
 
         $user = $user->first();
