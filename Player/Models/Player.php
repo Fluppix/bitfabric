@@ -147,6 +147,8 @@ class Player extends Model implements Contract
         }
 
         $character->save();
+
+        return $character;
     }
 
     /**
