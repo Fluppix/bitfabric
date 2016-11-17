@@ -2,12 +2,15 @@
 
 namespace Bitaac\Player\Models;
 
+use Bitaac\Player\Traits\Storage;
 use Bitaac\Player\Models\Formulae;
 use Bitaac\Core\Database\Eloquent\Model;
 use Bitaac\Contracts\Player as Contract;
 
 class Player extends Model implements Contract
 {
+    use Storage;
+
     /**
      * Table used by the model.
      */
@@ -210,5 +213,15 @@ class Player extends Model implements Contract
     public function guild()
     {
         return $this->hasOne('Bitaac\Contracts\GuildMember', 'player_id');
+    }
+
+    /**
+     * Get player storage relation.
+     *
+     * @return HasMany
+     */
+    public function storage()
+    {
+        return $this->hasMany('Bitaac\Contracts\PlayerStorage', 'player_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace Bitaac\Core\Providers;
 
 use Illuminate\Http\Response;
+use Bitaac\Contracts;
 use Bitaac\Admin\AdminServiceProvider;
 use Bitaac\Guild\GuildServiceProvider;
 use Bitaac\Store\StoreServiceProvider;
@@ -42,20 +43,21 @@ class BitfabricServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $bindings = [
-        'account'   => [\Bitaac\Contracts\Account::class   => \Bitaac\Account\Models\Account::class],
-        'player'    => [\Bitaac\Contracts\Player::class    => \Bitaac\Player\Models\Player::class],
-        'death'     => [\Bitaac\Contracts\Death::class     => \Bitaac\Death\Models\Death::class],
-        'online'    => [\Bitaac\Contracts\Online::class    => \Bitaac\Player\Models\Online::class],
-        'highscore' => [\Bitaac\Contracts\Highscore::class => \Bitaac\Highscore\Models\Highscore::class],
+        'account'        => [Contracts\Account::class   => \Bitaac\Account\Models\Account::class],
+        'player'         => [Contracts\Player::class    => \Bitaac\Player\Models\Player::class],
+        'death'          => [Contracts\Death::class     => \Bitaac\Death\Models\Death::class],
+        'online'         => [Contracts\Online::class    => \Bitaac\Player\Models\Online::class],
+        'highscore'      => [Contracts\Highscore::class => \Bitaac\Highscore\Models\Highscore::class],
+        'player.storage' => [Contracts\PlayerStorage::class => \Bitaac\Player\Models\PlayerStorage::class],
 
         // Guild
-        'guild'        => [\Bitaac\Contracts\Guild::class       => \Bitaac\Guild\Models\Guild::class],
-        'guild.member' => [\Bitaac\Contracts\GuildMember::class => \Bitaac\Guild\Models\GuildMember::class],
-        'guild.rank'   => [\Bitaac\Contracts\GuildRank::class   => \Bitaac\Guild\Models\GuildRank::class],
-        'guild.invite' => [\Bitaac\Contracts\GuildInvite::class => \Bitaac\Guild\Models\GuildInvite::class],
+        'guild'        => [Contracts\Guild::class       => \Bitaac\Guild\Models\Guild::class],
+        'guild.member' => [Contracts\GuildMember::class => \Bitaac\Guild\Models\GuildMember::class],
+        'guild.rank'   => [Contracts\GuildRank::class   => \Bitaac\Guild\Models\GuildRank::class],
+        'guild.invite' => [Contracts\GuildInvite::class => \Bitaac\Guild\Models\GuildInvite::class],
 
         // Forum
-        'forum.post' => [\Bitaac\Contracts\ForumPost::class => \Bitaac\Forum\Models\ForumPost::class],
+        'forum.post' => [Contracts\ForumPost::class => \Bitaac\Forum\Models\ForumPost::class],
     ];
 
     /**
