@@ -13,7 +13,7 @@ class DeathsController extends Controller
      */
     public function index()
     {
-        $deaths = app('death')->limit(5)->get();
+        $deaths = app('death')->orderBy('time', 'desc')->limit(5)->get();
 
         return view('bitaac::community.deaths')->with(compact('deaths'));
     }
